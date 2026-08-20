@@ -11,10 +11,10 @@ public class Player {
     }
     public void update(Input input) {
         var dx = input.right ? 1 : 0 - (input.left ? 1 : 0);
-        var dy = input.up ? 1 : 0 - (input.down ? 1 : 0);
+        var dy = input.down ? 1 : 0 - (input.up ? 1 : 0);
         var speed = ConfigConst.PLAYER_SPEED;
         if (dx != 0 && dy != 0) speed *= diagonalSpeedRate;
-        x = Util.clamp(x + dx * speed, 0, ConfigConst.WIDTH - ConfigConst.PLAYER_RADIUS);
-        y = Util.clamp(y + dy * speed, ConfigConst.PLAYER_RADIUS, ConfigConst.HEIGHT);
+        x = Util.clamp(x + dx * speed, ConfigConst.PLAYER_RADIUS, ConfigConst.WIDTH - ConfigConst.PLAYER_RADIUS);
+        y = Util.clamp(y + dy * speed, ConfigConst.PLAYER_RADIUS, ConfigConst.HEIGHT - ConfigConst.PLAYER_RADIUS);
     }
 }

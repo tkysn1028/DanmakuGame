@@ -54,10 +54,17 @@ public class GamePanel extends JPanel {
         var graphics = (Graphics2D) g0;
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setColor(new Color(230, 200, 90));
-        var drawX = (int) Math.round(player.x);
-        var drawY = (int) Math.round(ConfigConst.HEIGHT - player.y);
-        graphics.fillOval(drawX, drawY, ConfigConst.PLAYER_RADIUS, ConfigConst.PLAYER_RADIUS);
+        drawCircle(graphics, player.x, player.y, ConfigConst.PLAYER_RADIUS);
+        graphics.setColor(Color.RED);
+        fillCircle(graphics, player.x, player.y, ConfigConst.PLAYER_RADIUS / 2.5);
     }
+    static void fillCircle(Graphics2D g, double cx, double cy, double r) {
+        g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
+    }
+
+    static void drawCircle(Graphics2D g, double cx, double cy, double r) {
+        g.drawOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
+    }    
 
     public Input getInputFromKeys() {
         var input = new Input();
