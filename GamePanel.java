@@ -65,6 +65,12 @@ public class GamePanel extends JPanel {
         // Draw boss
         graphics.setColor(new Color(230, 200, 90));
         fillCircle(graphics, game.boss.x, game.boss.y, ConfigConst.BOSS_RADIUS);
+
+        // Draw bullets
+        graphics.setColor(Color.YELLOW);
+        for (Bullet bullet : game.bulletPool.bullets) {
+            fillCircle(graphics, bullet.x, bullet.y, 10);
+        }
     }
     private void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
