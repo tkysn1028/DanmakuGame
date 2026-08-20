@@ -1,7 +1,9 @@
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import game.Bullets;
 import game.ConfigConst;
+import game.Enemy;
 import game.Game;
 import game.Input;
 
@@ -16,6 +18,7 @@ import java.awt.event.KeyEvent;
 public class GamePanel extends JPanel {
     static final Color backgroundColor = new Color(14, 12, 24);
     final boolean[] keys = new boolean[256];
+    int frame = 0;
     private Game game = new Game();
 
     public GamePanel() {
@@ -42,7 +45,8 @@ public class GamePanel extends JPanel {
             }
         });
         new Timer(16, e -> {
-            game.step(getInputFromKeys());
+            frame++;
+            game.step(getInputFromKeys(), frame);
             repaint();
         }).start();
     }
@@ -50,13 +54,18 @@ public class GamePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g0) {
         super.paintComponent(g0);
-        var player = game.player;
         var graphics = (Graphics2D) g0;
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setColor(new Color(230, 200, 90));
-        drawCircle(graphics, player.x, player.y, ConfigConst.PLAYER_RADIUS);
+
+        // Draw player
+        graphics.setColor(Color.WHITE);
+        drawCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS);
         graphics.setColor(Color.RED);
-        fillCircle(graphics, player.x, player.y, ConfigConst.PLAYER_RADIUS / 2.5);
+        fillCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS / 2.5);
+        
+        // Draw boss
+        graphics.setColor(new Color(230, 200, 90));
+        fillCircle(graphics, game.boss.x, game.boss.y, ConfigConst.BOSS_RADIUS);
     }
     static void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));

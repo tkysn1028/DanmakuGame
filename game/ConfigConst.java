@@ -6,5 +6,6 @@ public class ConfigConst {
     public static final int FPS = 60;
     public static final double PLAYER_SPEED = 5.0;
     public static final int PLAYER_RADIUS = 10;
+    public static final int BOSS_RADIUS = 30;
     private ConfigConst() {}
 }
