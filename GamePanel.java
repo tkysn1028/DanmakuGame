@@ -54,7 +54,9 @@ public class GamePanel extends JPanel {
         var graphics = (Graphics2D) g0;
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         graphics.setColor(new Color(230, 200, 90));
-        graphics.fillOval(player.x, ConfigConst.HEIGHT - player.y, ConfigConst.PLAYER_RADIUS, ConfigConst.PLAYER_RADIUS);
+        var drawX = (int) Math.round(player.x);
+        var drawY = (int) Math.round(ConfigConst.HEIGHT - player.y);
+        graphics.fillOval(drawX, drawY, ConfigConst.PLAYER_RADIUS, ConfigConst.PLAYER_RADIUS);
     }
 
     public Input getInputFromKeys() {

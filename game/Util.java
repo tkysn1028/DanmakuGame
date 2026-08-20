@@ -1,7 +1,7 @@
 package game;
 
 public class Util {
-    public static int clamp(int value, int min, int max) {
+    public static double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));
     }
 }
