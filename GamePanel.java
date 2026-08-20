@@ -1,9 +1,8 @@
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import game.Bullets;
+import game.Bullet;
 import game.ConfigConst;
-import game.Enemy;
 import game.Game;
 import game.Input;
 
@@ -67,15 +66,15 @@ public class GamePanel extends JPanel {
         graphics.setColor(new Color(230, 200, 90));
         fillCircle(graphics, game.boss.x, game.boss.y, ConfigConst.BOSS_RADIUS);
     }
-    static void fillCircle(Graphics2D g, double cx, double cy, double r) {
+    private void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
     }
 
-    static void drawCircle(Graphics2D g, double cx, double cy, double r) {
+    private static void drawCircle(Graphics2D g, double cx, double cy, double r) {
         g.drawOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
     }    
 
-    public Input getInputFromKeys() {
+    private Input getInputFromKeys() {
         var input = new Input();
         input.up = keys[KeyEvent.VK_UP];
         input.down = keys[KeyEvent.VK_DOWN];
