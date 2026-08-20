@@ -3,7 +3,7 @@ package game;
 public class Player {
 
     public double x = (ConfigConst.WIDTH - ConfigConst.PLAYER_RADIUS) / 2.0;
-    public double y = ConfigConst.PLAYER_RADIUS;
+    public double y = ConfigConst.HEIGHT - ConfigConst.PLAYER_RADIUS;
     private double diagonalSpeedRate = 0.7071;
     public void setXY(double x, double y) {
         this.x = x;
