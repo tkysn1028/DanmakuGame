@@ -1,4 +1,7 @@
-package game;
+package game.object;
+
+import game.ConfigConst;
+import game.Util;
 
 public class Player {
 

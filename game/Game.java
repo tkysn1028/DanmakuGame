@@ -1,5 +1,11 @@
 package game;
 
+import game.object.Boss;
+import game.object.BulletPool;
+import game.object.Input;
+import game.object.Player;
+import game.scheduler.Scheduler;
+
 public class Game {
     public Player player = new Player();
     public Boss boss = new Boss();

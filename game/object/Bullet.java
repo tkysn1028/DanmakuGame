@@ -1,6 +1,8 @@
-package game;
+package game.object;
 
 import java.awt.Color;
+
+import game.ConfigConst;
 
 public class Bullet {
     public double x, y;

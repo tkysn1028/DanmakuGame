@@ -1,4 +1,6 @@
-package game;
+package game.object;
+
+import game.ConfigConst;
 
 public class Boss {
     public double x = ConfigConst.WIDTH / 2.0;

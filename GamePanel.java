@@ -1,10 +1,10 @@
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import game.Bullet;
 import game.ConfigConst;
 import game.Game;
-import game.Input;
+import game.object.Bullet;
+import game.object.Input;
 
 import java.awt.Color;
 import java.awt.Dimension;

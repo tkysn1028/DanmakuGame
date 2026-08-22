@@ -1,4 +1,4 @@
-package game;
+package game.scheduler;
 
 public class Task {
     public Coroutine co;
