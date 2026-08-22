@@ -1,28 +1,55 @@
 package game.object;
-
 import game.ConfigConst;
 import game.MathUtil;
 
 public class Player {
 
-    public double x = (ConfigConst.WIDTH - ConfigConst.PLAYER_RADIUS) / 2.0;
-    public double y = ConfigConst.HEIGHT - ConfigConst.PLAYER_RADIUS;
-    public int hitPoints = 3;
-    public int iframes = 0;
+    public double x = (ConfigConst.WIDTH - this.radius) / 2.0;
+    public double y = ConfigConst.HEIGHT - this.radius;
+
+    private int radius = 4;
+    public int radius() {
+        return radius;
+    }
+
+    private double speed = 5.0;
+    public double speed() {
+        return speed;
+    }
+    public void slowDown() {
+        speed = 2.5;
+    }
+    public void fastUp() {
+        speed = 5.0;
+    }
+
+    private int hitPoints = 3;
+    public int hitPoints() {
+        return hitPoints;
+    }
+    public void hit() {
+        if(hitPoints > 0) hitPoints--;
+    }
+
+    private int iframes = 0;
+    public int iframes() {
+        return iframes;
+    }
+    public void setIframes() {
+        iframes = 90;
+    }
 
     private double diagonalSpeedRate = 0.7071;
+    private double clampRate = 2.5;
 
-    public void setXY(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }
     public void update(Input input) {
         var dx = input.right ? 1 : 0 - (input.left ? 1 : 0);
         var dy = input.down ? 1 : 0 - (input.up ? 1 : 0);
-        var speed = ConfigConst.PLAYER_SPEED;
+        var speed = this.speed;
+        var radius = this.radius * clampRate;
         if (dx != 0 && dy != 0) speed *= diagonalSpeedRate;
-        x = MathUtil.clamp(x + dx * speed, ConfigConst.PLAYER_RADIUS, ConfigConst.WIDTH - ConfigConst.PLAYER_RADIUS);
-        y = MathUtil.clamp(y + dy * speed, ConfigConst.PLAYER_RADIUS, ConfigConst.HEIGHT - ConfigConst.PLAYER_RADIUS);
+        x = MathUtil.clamp(x + dx * speed, radius, ConfigConst.WIDTH - radius);
+        y = MathUtil.clamp(y + dy * speed, radius, ConfigConst.HEIGHT - radius);
         if(iframes > 0) iframes--;
     }
 }

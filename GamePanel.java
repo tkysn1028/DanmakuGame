@@ -1,6 +1,7 @@
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import game.ColorConst;
 import game.ConfigConst;
 import game.Game;
 import game.object.Bullet;
@@ -16,7 +17,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class GamePanel extends JPanel {
-    static final Color backgroundColor = new Color(14, 12, 24);
+    static final Color backgroundColor = ColorConst.DARKBLUE;
     final boolean[] keys = new boolean[256];
     int frame = 0;
     private Game game = new Game();
@@ -58,27 +59,27 @@ public class GamePanel extends JPanel {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Draw player
-        if(game.player.iframes == 0 || (frame / 2) % 2 == 0) {
-            graphics.setColor(Color.WHITE);
-            drawCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS);
-            graphics.setColor(Color.RED);
-            fillCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS / 2.5);
+        if(game.player.iframes() == 0 || (frame / 2) % 2 == 0) {
+            graphics.setColor(ColorConst.WHITE);
+            drawCircle(graphics, game.player.x, game.player.y, game.player.radius() * 2.5);
+            graphics.setColor(ColorConst.RED);
+            fillCircle(graphics, game.player.x, game.player.y, game.player.radius());
         }
     
         // Draw boss
-        graphics.setColor(new Color(230, 200, 90));
-        fillCircle(graphics, game.boss.x, game.boss.y, ConfigConst.BOSS_RADIUS);
+        graphics.setColor(ColorConst.WHITEYELLOW);
+        fillCircle(graphics, game.boss.x, game.boss.y, game.boss.radius());
 
         // Draw bullets
         for (Bullet bullet : game.bulletPool.bullets) {
-            graphics.setColor(bullet.color);
+            graphics.setColor(bullet.color());
             fillCircle(graphics, bullet.x, bullet.y, bullet.radius);
         }
 
         // Draw ScoreBoard
-        graphics.setColor(new Color(150, 150, 170));
+        graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));        
-        graphics.drawString(String.format("bullets %4d   hits %d", game.bulletPool.bullets.size(), game.player.hitPoints), 8, ConfigConst.HEIGHT - 12);
+        graphics.drawString(String.format("bullets %4d   hits %d", game.bulletPool.bullets.size(), game.player.hitPoints()), 8, ConfigConst.HEIGHT - 12);
     }
     private void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));

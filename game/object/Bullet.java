@@ -6,8 +6,17 @@ import game.ConfigConst;
 
 public class Bullet {
     public double x, y;
+
     public int radius;
-    public Color color;
+    public int radius() {
+        return radius;
+    }
+
+    private Color color;
+    public Color color() {
+        return color;
+    }
+
     private double vx, vy;
 
     public Bullet(double x, double y, double speed, double angle, int radius, Color color) {

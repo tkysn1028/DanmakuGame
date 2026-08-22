@@ -22,13 +22,11 @@ public class Game {
         player.update(input);
         boss.update(frame);
         bulletPool.update();
-        if(player.iframes == 0) {
+        if(player.iframes() == 0) {
             bulletPool.bullets.stream().forEach(b -> {
-                if(Collision.check(player.x, player.y, ConfigConst.PLAYER_RADIUS, b.x, b.y, b.radius)) {
-                    if(player.hitPoints > 0) {
-                        player.hitPoints--;
-                        player.iframes = 90;
-                    }
+                if(Collision.check(player.x, player.y, player.radius(), b.x, b.y, b.radius)) {
+                    player.hit();
+                    player.setIframes();
                 }
             });
         }
