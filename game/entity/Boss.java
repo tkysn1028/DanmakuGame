@@ -1,6 +1,6 @@
-package game.object;
+package game.entity;
 
-import game.ConfigConst;
+import game.util.ConfigConst;
 
 public class Boss extends Entity {
     public Boss() {

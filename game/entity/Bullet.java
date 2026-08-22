@@ -1,8 +1,8 @@
-package game.object;
+package game.entity;
 
 import java.awt.Color;
 
-import game.ConfigConst;
+import game.util.ConfigConst;
 
 public class Bullet extends Entity {
     

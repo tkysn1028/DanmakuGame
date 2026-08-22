@@ -1,4 +1,4 @@
-package game;
+package game.util;
 
 public class ConfigConst {
     public static final int WIDTH = 480;

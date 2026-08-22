@@ -1,4 +1,4 @@
-package game.object;
+package game.entity;
 
 public class Entity {
     public double x, y;

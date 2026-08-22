@@ -1,13 +1,14 @@
-package game;
+package game.core;
 
 import java.util.List;
 
-import game.object.Boss;
-import game.object.Bullet;
-import game.object.BulletPool;
-import game.object.Input;
-import game.object.Player;
+import game.bullet.BulletPatterns;
+import game.bullet.BulletPool;
+import game.entity.Boss;
+import game.entity.Bullet;
+import game.entity.Player;
 import game.scheduler.Scheduler;
+import game.util.Collision;
 
 public class Game {
     public Player player = new Player();

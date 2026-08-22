@@ -1,6 +1,7 @@
-package game.object;
-import game.ConfigConst;
-import game.MathUtil;
+package game.entity;
+import game.core.Input;
+import game.util.ConfigConst;
+import game.util.MathUtil;
 
 public class Player extends Entity {
     public Player() {

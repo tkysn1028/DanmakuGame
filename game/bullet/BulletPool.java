@@ -1,7 +1,10 @@
-package game.object;
+package game.bullet;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import game.entity.Bullet;
+
 import java.awt.Color;
 
 public class BulletPool {

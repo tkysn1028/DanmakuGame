@@ -1,7 +1,8 @@
-package game;
+package game.bullet;
 
 import java.awt.Color;
 
+import game.core.Game;
 import game.scheduler.Coroutine;
 
 public class BulletPatterns {

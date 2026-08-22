@@ -1,11 +1,11 @@
+package game.ui;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import game.ColorConst;
-import game.ConfigConst;
-import game.Game;
-import game.object.Bullet;
-import game.object.Input;
+import game.core.Game;
+import game.core.Input;
+import game.entity.Bullet;
+import game.util.ConfigConst;
 
 import java.awt.Color;
 import java.awt.Dimension;

@@ -1,6 +1,6 @@
-package game;
+package game.util;
 
-import game.object.Entity;
+import game.entity.Entity;
 
 public class Collision {
     public static boolean check(Entity e1, Entity e2) {
