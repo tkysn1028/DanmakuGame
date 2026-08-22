@@ -15,8 +15,4 @@ public class BulletPool {
         bullets.stream().forEach(b -> b.update());
         bullets.removeIf(Bullet::isGone);
     }
-
-    public List<Bullet> all() {
-        return bullets;
-    }
 }
