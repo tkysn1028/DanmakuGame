@@ -11,6 +11,11 @@ public class Game {
     public Boss boss = new Boss();
     public BulletPool bulletPool = new BulletPool();
     public Scheduler scheduler = new Scheduler();
+
+    public Game() {
+        scheduler.add(BulletPatterns.ringSpiral(this));
+        scheduler.add(BulletPatterns.aimedSpread(this));
+    }
     
     public void step(Input input, int frame) {
         scheduler.tick();

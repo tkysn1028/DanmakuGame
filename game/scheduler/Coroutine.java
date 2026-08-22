@@ -10,11 +10,11 @@ public class Coroutine {
     private boolean started = false;
     private boolean done = false;
 
-    interface Yielder {
+    public interface Yielder {
         void pause(int frames) throws InterruptedException;
     }
 
-    interface Body {
+    public interface Body {
         void run(Yielder y) throws InterruptedException;
     }
 

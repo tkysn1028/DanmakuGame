@@ -6,16 +6,25 @@ import game.ConfigConst;
 
 public class Bullet {
     public double x, y;
+    public int radius;
+    public Color color;
+    private double vx, vy;
 
-    public Bullet(double x, double y, double speed, double angle, int r, Color c) {
+    public Bullet(double x, double y, double speed, double angle, int radius, Color color) {
         this.x = x;
         this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.vx = speed * Math.cos(angle);
+        this.vy = speed * Math.sin(angle);
     }
 
     public void update() {
-
+        x += vx;
+        y += vy;
     }
-    boolean isGone() {
+
+    public boolean isGone() {
         final int m = 32;
         return x < -m || x > ConfigConst.WIDTH + m || y < -m || y > ConfigConst.HEIGHT + m;
     }
