@@ -26,9 +26,4 @@ public class Bullet extends Entity {
         x += vx;
         y += vy;
     }
-
-    public boolean isGone() {
-        final int m = 32;
-        return x < -m || x > ConfigConst.WIDTH + m || y < -m || y > ConfigConst.HEIGHT + m;
-    }
 }

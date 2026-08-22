@@ -21,7 +21,7 @@ public class Player extends Entity {
         speed = 5.0;
     }
 
-    private int hitPoints = 3;
+    private int hitPoints = 100;
     public int hitPoints() {
         return hitPoints;
     }

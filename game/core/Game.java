@@ -1,5 +1,6 @@
 package game.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import game.bullet.BulletPatterns;
@@ -7,7 +8,9 @@ import game.bullet.BulletPool;
 import game.entity.Boss;
 import game.entity.Bullet;
 import game.entity.Player;
+import game.entity.Shot;
 import game.scheduler.Scheduler;
+import game.shot.ShotPool;
 import game.util.Collision;
 
 public class Game {
@@ -15,6 +18,7 @@ public class Game {
     public Boss boss = new Boss();
     public BulletPool bulletPool = new BulletPool();
     public Scheduler scheduler = new Scheduler();
+    public ShotPool shotPool = new ShotPool();
 
     public Game() {
         scheduler.add(BulletPatterns.ringSpiral(this));
@@ -26,7 +30,8 @@ public class Game {
         player.update(input);
         boss.update(frame);
         bulletPool.update();
-        collideWithBullets(player, bulletPool.bullets);
+        shotPool.update(input, player.x, player.y, frame);
+        collideWithBullets(player, bulletPool.all());
     }
 
     private void collideWithBullets(Player player, List<Bullet> bullets) {

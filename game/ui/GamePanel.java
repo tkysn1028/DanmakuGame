@@ -71,15 +71,21 @@ public class GamePanel extends JPanel {
         fillCircle(graphics, game.boss.x, game.boss.y, game.boss.radius());
 
         // Draw bullets
-        for (Bullet bullet : game.bulletPool.bullets) {
+        game.bulletPool.all().forEach((bullet) -> {
             graphics.setColor(bullet.color());
             fillCircle(graphics, bullet.x, bullet.y, bullet.radius());
-        }
+        });
+
+        // Draw Shots
+        game.shotPool.all().forEach((shot) -> {
+            graphics.setColor(shot.color());
+            graphics.fillRect((int)(shot.x - 2), (int)(shot.y - 8), shot.radius(), shot.radius());
+        });
 
         // Draw ScoreBoard
         graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));        
-        graphics.drawString(String.format("bullets %4d   hits %d", game.bulletPool.bullets.size(), game.player.hitPoints()), 8, ConfigConst.HEIGHT - 12);
+        graphics.drawString(String.format("bullets %4d   hits %d", game.bulletPool.all().size(), game.player.hitPoints()), 8, ConfigConst.HEIGHT - 12);
     }
     private void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
@@ -95,6 +101,7 @@ public class GamePanel extends JPanel {
         input.down = keys[KeyEvent.VK_DOWN];
         input.left = keys[KeyEvent.VK_LEFT];
         input.right = keys[KeyEvent.VK_RIGHT];
+        input.shot = keys[KeyEvent.VK_Z];
         return input;
     }
 }
