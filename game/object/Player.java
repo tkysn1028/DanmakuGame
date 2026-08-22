@@ -2,14 +2,11 @@ package game.object;
 import game.ConfigConst;
 import game.MathUtil;
 
-public class Player {
-
-    public double x = (ConfigConst.WIDTH - this.radius) / 2.0;
-    public double y = ConfigConst.HEIGHT - this.radius;
-
-    private int radius = 4;
-    public int radius() {
-        return radius;
+public class Player extends Entity {
+    public Player() {
+        x = (ConfigConst.WIDTH - this.radius) / 2.0;
+        y = ConfigConst.HEIGHT - this.radius;
+        this.radius = 4;
     }
 
     private double speed = 5.0;

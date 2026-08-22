@@ -1,6 +1,9 @@
 package game;
 
+import java.util.List;
+
 import game.object.Boss;
+import game.object.Bullet;
 import game.object.BulletPool;
 import game.object.Input;
 import game.object.Player;
@@ -22,9 +25,13 @@ public class Game {
         player.update(input);
         boss.update(frame);
         bulletPool.update();
+        collideWithBullets(player, bulletPool.bullets);
+    }
+
+    private void collideWithBullets(Player player, List<Bullet> bullets) {
         if(player.iframes() == 0) {
-            bulletPool.bullets.stream().forEach(b -> {
-                if(Collision.check(player.x, player.y, player.radius(), b.x, b.y, b.radius)) {
+            bullets.stream().forEach(bullet -> {
+                if(Collision.check(player, bullet)) {
                     player.hit();
                     player.setIframes();
                 }

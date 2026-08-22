@@ -2,13 +2,11 @@ package game.object;
 
 import game.ConfigConst;
 
-public class Boss {
-    public double x = ConfigConst.WIDTH / 2.0;
-    public double y = ConfigConst.HEIGHT / 5.0;
-
-    private int radius = 30;
-    public int radius() {
-        return radius;
+public class Boss extends Entity {
+    public Boss() {
+        x = ConfigConst.WIDTH / 2.0;
+        y = ConfigConst.HEIGHT / 5.0;
+        this.radius = 30;
     }
 
     public void update(int frame) {

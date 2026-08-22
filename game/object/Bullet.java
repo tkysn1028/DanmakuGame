@@ -4,14 +4,8 @@ import java.awt.Color;
 
 import game.ConfigConst;
 
-public class Bullet {
-    public double x, y;
-
-    public int radius;
-    public int radius() {
-        return radius;
-    }
-
+public class Bullet extends Entity {
+    
     private Color color;
     public Color color() {
         return color;

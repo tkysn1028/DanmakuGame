@@ -1,11 +1,12 @@
 package game;
 
+import game.object.Entity;
+
 public class Collision {
-    public static boolean check(double x1, double y1, double r1, double x2, double y2, double r2) {
-        double dx = x1 - x2;
-        double dy = y1 - y2;
-        double distanceSquared = dx * dx + dy * dy;
-        double radiusSum = r1 + r2;
-        return distanceSquared <= radiusSum * radiusSum;
+    public static boolean check(Entity e1, Entity e2) {
+        double dx = e1.x - e2.x;
+        double dy = e1.y - e2.y;
+        double radiusSum = e1.radius() + e1.radius();
+        return dx * dx + dy * dy <= radiusSum * radiusSum;
     }
 }

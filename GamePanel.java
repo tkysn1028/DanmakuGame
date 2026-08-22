@@ -73,7 +73,7 @@ public class GamePanel extends JPanel {
         // Draw bullets
         for (Bullet bullet : game.bulletPool.bullets) {
             graphics.setColor(bullet.color());
-            fillCircle(graphics, bullet.x, bullet.y, bullet.radius);
+            fillCircle(graphics, bullet.x, bullet.y, bullet.radius());
         }
 
         // Draw ScoreBoard
