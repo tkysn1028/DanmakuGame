@@ -85,7 +85,8 @@ public class GamePanel extends JPanel {
         // Draw ScoreBoard
         graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));        
-        graphics.drawString(String.format("bullets %4d   hits %d", game.bulletPool.all().size(), game.player.hitPoints()), 8, ConfigConst.HEIGHT - 12);
+        graphics.drawString(String.format("bullets %4d   PlayerHP %d   BossHP %d", game.bulletPool.all().size(), game.player.hitPoints(), game.boss.hitPoints()),
+             8, ConfigConst.HEIGHT - 12);
     }
     private void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));

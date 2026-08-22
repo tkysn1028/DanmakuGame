@@ -32,16 +32,25 @@ public class Game {
         bulletPool.update();
         shotPool.update(input, player.x, player.y, frame);
         collideWithBullets(player, bulletPool.all());
+        collideWithShots(boss, shotPool.all());
     }
 
     private void collideWithBullets(Player player, List<Bullet> bullets) {
         if(player.iframes() == 0) {
-            bullets.stream().forEach(bullet -> {
+            bullets.forEach(bullet -> {
                 if(Collision.check(player, bullet)) {
                     player.hit();
                     player.setIframes();
                 }
             });
         }
+    }
+
+    private void collideWithShots(Boss boss, List<Shot> shots) {
+        shots.forEach((shot) -> {
+            if(Collision.check(boss, shot)) {
+                boss.hit();
+            }
+        });
     }
 }
