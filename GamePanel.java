@@ -8,6 +8,7 @@ import game.object.Input;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -57,11 +58,13 @@ public class GamePanel extends JPanel {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Draw player
-        graphics.setColor(Color.WHITE);
-        drawCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS);
-        graphics.setColor(Color.RED);
-        fillCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS / 2.5);
-        
+        if(game.player.iframes == 0 || (frame / 2) % 2 == 0) {
+            graphics.setColor(Color.WHITE);
+            drawCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS);
+            graphics.setColor(Color.RED);
+            fillCircle(graphics, game.player.x, game.player.y, ConfigConst.PLAYER_RADIUS / 2.5);
+        }
+    
         // Draw boss
         graphics.setColor(new Color(230, 200, 90));
         fillCircle(graphics, game.boss.x, game.boss.y, ConfigConst.BOSS_RADIUS);
@@ -71,6 +74,11 @@ public class GamePanel extends JPanel {
             graphics.setColor(bullet.color);
             fillCircle(graphics, bullet.x, bullet.y, bullet.radius);
         }
+
+        // Draw ScoreBoard
+        graphics.setColor(new Color(150, 150, 170));
+        graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));        
+        graphics.drawString(String.format("bullets %4d   hits %d", game.bulletPool.bullets.size(), game.player.hitPoints), 8, ConfigConst.HEIGHT - 12);
     }
     private void fillCircle(Graphics2D g, double cx, double cy, double r) {
         g.fillOval((int) (cx - r), (int) (cy - r), (int) (r * 2), (int) (r * 2));
