@@ -11,6 +11,14 @@ public class Shot extends Entity {
     private double vx, vy;
     private double speed = 10.0;
 
+    private boolean dead;
+    public boolean isDead() {
+        return dead;
+    }
+    public void kill() {
+        this.dead = true;
+    }
+
     public Shot(double x, double y) {
         this.x = x;
         this.y = y;

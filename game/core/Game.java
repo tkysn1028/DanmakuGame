@@ -50,6 +50,7 @@ public class Game {
         shots.forEach((shot) -> {
             if(Collision.check(boss, shot)) {
                 boss.hit();
+                shot.kill();
             }
         });
     }
