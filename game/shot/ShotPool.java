@@ -18,7 +18,7 @@ public class ShotPool {
     public void update(Input input, double x, double y, int frame) {
         shots.forEach(s -> s.update());
         if(input.shot && frame % shotInterval == 0) shots.add(new Shot(x, y));
-        shots.removeIf((s) -> GameUtil.isGone(s.x, s.y) || s.isDead());
+        shots.removeIf((s) -> GameUtil.isGone(s.x, s.y) || s.isExpired());
     }
 
     public List<Shot> all() {

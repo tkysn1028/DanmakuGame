@@ -4,20 +4,14 @@ import java.awt.Color;
 
 public class Shot extends Entity {
     private Color color = Color.MAGENTA;
-    public Color color() {
-        return color;
-    }
+    public Color color() { return color; }
 
     private double vx, vy;
     private double speed = 10.0;
 
-    private boolean dead;
-    public boolean isDead() {
-        return dead;
-    }
-    public void kill() {
-        this.dead = true;
-    }
+    private boolean expired;
+    public boolean isExpired() { return expired; }
+    public void expire() { this.expired = true; }
 
     public Shot(double x, double y) {
         this.x = x;

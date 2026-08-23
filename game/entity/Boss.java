@@ -3,10 +3,8 @@ package game.entity;
 import game.util.ConfigConst;
 
 public class Boss extends Entity {
-    private int hitPoints = 10000;
-    public int hitPoints() {
-        return hitPoints;
-    }
+    private int hitPoints = 500;
+    public int hitPoints() { return hitPoints; }
     public void hit() {
         if(hitPoints > 0) hitPoints--;
     }

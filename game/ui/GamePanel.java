@@ -4,7 +4,6 @@ import javax.swing.Timer;
 
 import game.core.Game;
 import game.core.Input;
-import game.entity.Bullet;
 import game.util.ConfigConst;
 
 import java.awt.Color;

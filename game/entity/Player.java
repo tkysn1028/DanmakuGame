@@ -11,31 +11,17 @@ public class Player extends Entity {
     }
 
     private double speed = 5.0;
-    public double speed() {
-        return speed;
-    }
-    public void slowDown() {
-        speed = 2.5;
-    }
-    public void fastUp() {
-        speed = 5.0;
-    }
+    public double speed() { return speed; }
+    public void slowDown() { speed = 2.5; }
+    public void fastUp() { speed = 5.0; }
 
     private int hitPoints = 100;
-    public int hitPoints() {
-        return hitPoints;
-    }
-    public void hit() {
-        if(hitPoints > 0) hitPoints--;
-    }
+    public int hitPoints() { return hitPoints; }
+    public void hit() { if( hitPoints > 0) hitPoints--; }
 
     private int iframes = 0;
-    public int iframes() {
-        return iframes;
-    }
-    public void setIframes() {
-        iframes = 90;
-    }
+    public int iframes() { return iframes; }
+    public void setIframes() { iframes = 90; }
 
     private double diagonalSpeedRate = 0.7071;
     private double clampRate = 2.5;

@@ -2,14 +2,10 @@ package game.entity;
 
 import java.awt.Color;
 
-import game.util.ConfigConst;
-
 public class Bullet extends Entity {
     
     private Color color;
-    public Color color() {
-        return color;
-    }
+    public Color color() { return color; }
 
     private double vx, vy;
 

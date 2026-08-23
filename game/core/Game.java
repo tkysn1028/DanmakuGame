@@ -1,6 +1,5 @@
 package game.core;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import game.bullet.BulletPatterns;
@@ -50,7 +49,7 @@ public class Game {
         shots.forEach((shot) -> {
             if(Collision.check(boss, shot)) {
                 boss.hit();
-                shot.kill();
+                shot.expire();
             }
         });
     }
