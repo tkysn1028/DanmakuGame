@@ -34,6 +34,10 @@ public class Game {
         collideWithShots(boss, shotPool.all());
     }
 
+    public boolean isGameOver() {
+        return player.hitPoints() == 0;
+    }
+
     private void collideWithBullets(Player player, List<Bullet> bullets) {
         if(player.iframes() == 0) {
             bullets.forEach(bullet -> {
