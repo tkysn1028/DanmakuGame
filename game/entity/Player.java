@@ -29,6 +29,11 @@ public class Player extends Entity {
     public void update(Input input) {
         var dx = input.right ? 1 : 0 - (input.left ? 1 : 0);
         var dy = input.down ? 1 : 0 - (input.up ? 1 : 0);
+        if (input.slowDown) {
+            this.slowDown();
+        } else {
+            this.fastUp();
+        }
         var speed = this.speed;
         var radius = this.radius * clampRate;
         if (dx != 0 && dy != 0) speed *= diagonalSpeedRate;

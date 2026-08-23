@@ -163,6 +163,7 @@ public class GamePanel extends JPanel {
         input.left = keys[KeyEvent.VK_LEFT];
         input.right = keys[KeyEvent.VK_RIGHT];
         input.shot = keys[KeyEvent.VK_Z];
+        input.slowDown = keys[KeyEvent.VK_SHIFT];
         var confirm = keys[KeyEvent.VK_Z];
         input.confirmPressed = confirm && !prevConfirm;
         prevConfirm = confirm;

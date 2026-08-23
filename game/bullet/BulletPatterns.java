@@ -10,7 +10,7 @@ public class BulletPatterns {
 
     public static Coroutine ringSpiral(Game g) {
         final int bulletsPerTick = 16;
-        final int cycles = 24;
+        final int cycles = 48;
         final double bulletSpeed = 2.2, twistAngle = 0.13;
         final int intervalPerTick = 6;
         final int intervalPerLoop = 70;
@@ -33,7 +33,7 @@ public class BulletPatterns {
 
     public static Coroutine aimedSpread(Game g) {
         final int bulletsPerTick = 5;
-        final int cycles = 3;
+        final int cycles = 10;
         final double bulletSpeed = 2.2, bulletSpread = 0.5;
         final int intervalPerTick = 6;
         final int intervalPerLoop = 90;

@@ -3,7 +3,7 @@ package game.entity;
 import game.util.ConfigConst;
 
 public class Boss extends Entity {
-    private int hitPoints = 500;
+    private int hitPoints = 50;
     public int hitPoints() { return hitPoints; }
     public void hit() {
         if(hitPoints > 0) hitPoints--;
@@ -16,6 +16,6 @@ public class Boss extends Entity {
     }
 
     public void update(int frame) {
-        x = ConfigConst.WIDTH / 2.0 + Math.sin(frame / 90.0) * ConfigConst.WIDTH / 4.0;
+        x = ConfigConst.WIDTH / 2.0 + Math.sin(frame / 50.0) * ConfigConst.WIDTH / 4.0;
     }
 }
