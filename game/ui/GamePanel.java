@@ -1,11 +1,7 @@
 package game.ui;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-
 import game.core.Input;
 import game.core.SceneManager;
 import game.util.ConfigConst;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -14,9 +10,11 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class GamePanel extends JPanel {
-    static final Color backgroundColor = ColorConst.DARKBLUE;
+    static final Color backGroundColor = ColorConst.DARKBLUE;
     final boolean[] keys = new boolean[256];
     int frame = 0;
     SceneManager sceneManager = new SceneManager();
@@ -24,7 +22,7 @@ public class GamePanel extends JPanel {
 
     public GamePanel() {
         setPreferredSize(new Dimension(ConfigConst.WIDTH, ConfigConst.HEIGHT));
-        setBackground(backgroundColor);
+        setBackground(backGroundColor);
         setFocusable(true);
         addKeyListener(new KeyAdapter() {
             @Override
