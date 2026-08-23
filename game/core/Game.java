@@ -2,12 +2,13 @@ package game.core;
 
 import java.util.List;
 
-import game.bullet.BulletPatterns;
 import game.bullet.BulletPool;
 import game.entity.Boss;
 import game.entity.Bullet;
 import game.entity.Player;
 import game.entity.Shot;
+import game.patterns.BulletPatterns;
+import game.patterns.MovePatterns;
 import game.scheduler.Scheduler;
 import game.shot.ShotPool;
 import game.util.Collision;
@@ -20,14 +21,14 @@ public class Game {
     public ShotPool shotPool = new ShotPool();
 
     public Game() {
-        scheduler.add(BulletPatterns.ringSpiral(this));
-        scheduler.add(BulletPatterns.aimedSpread(this));
+        scheduler.add(MovePatterns.moveBossPendulum(boss));
+        scheduler.add(BulletPatterns.ringSpiral(bulletPool, boss));
+        scheduler.add(BulletPatterns.aimedSpread(bulletPool, player, boss));
     }
     
     public void step(Input input, int frame) {
         scheduler.tick();
         player.update(input);
-        boss.update(frame);
         bulletPool.update();
         shotPool.update(input, player.x, player.y, frame);
         collideWithBullets(player, bulletPool.all());
@@ -44,6 +45,7 @@ public class Game {
                 if(Collision.check(player, bullet)) {
                     player.hit();
                     player.setIframes();
+                    return;
                 }
             });
         }
