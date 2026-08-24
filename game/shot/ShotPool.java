@@ -9,7 +9,7 @@ import game.util.GameUtil;
 
 public class ShotPool {
     private List<Shot> shots = new ArrayList<>();
-    private int shotInterval = 10;
+    private int shotInterval = 8;
 
     public void pool(double x, double y) {
         shots.add(new Shot(x, y));

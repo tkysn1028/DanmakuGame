@@ -8,10 +8,6 @@ public class Enemy extends Entity{
     private int maxHitPoints;
     public int maxHitPoints() { return maxHitPoints; }
 
-    public boolean isGone() { 
-        return y < -radius * 2;
-    }
-
     public Enemy(int hitPoints, int radius) {
         this.hitPoints = hitPoints;
         this.maxHitPoints = hitPoints;

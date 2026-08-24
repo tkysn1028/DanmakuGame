@@ -114,6 +114,11 @@ public class GamePanel extends JPanel {
             fillCircle(graphics, enemy.x, enemy.y, enemy.radius());
         });
 
+        // Draw Boss
+        if (boss != null) {
+            fillCircle(graphics, boss.x, boss.y, boss.radius());
+        }
+
         // Draw bullets
         bullets.forEach((bullet) -> {
             graphics.setColor(bullet.color());

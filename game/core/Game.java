@@ -10,6 +10,7 @@ import game.scheduler.Coroutine;
 import game.scheduler.Scheduler;
 import game.shot.ShotPool;
 import game.util.Collision;
+import game.util.GameUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,8 @@ public class Game {
         bulletPool.update();
         shotPool.update(input, player.x, player.y, frame);
         collideWithBullets(player, bulletPool.all());
-        collideWithShots(enemies, shotPool.all());
+        collideWithShots(enemies, boss, shotPool.all());
+        enemies.removeIf(e -> e.hitPoints() == 0 || GameUtil.isGone(e.x, e.y));
     }
 
     public boolean isGameOver() {
@@ -55,9 +57,14 @@ public class Game {
         }
     }
 
-    private void collideWithShots(List<Enemy> enemies, List<Shot> shots) {
+    private void collideWithShots(List<Enemy> enemies, Enemy boss, List<Shot> shots) {
        for (Shot shot : shots) {
             if (shot.isExpired()) continue;
+            if (boss != null && Collision.check(boss, shot)) {
+                boss.hit();
+                shot.expire();
+                continue;
+            }
             for (Enemy e : enemies) {
                 if (Collision.check(e, shot)) {
                     e.hit();

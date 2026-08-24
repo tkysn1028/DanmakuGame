@@ -1,11 +1,12 @@
 package game.patterns;
 
-import java.awt.Color;
-
 import game.bullet.BulletPool;
 import game.entity.Enemy;
 import game.entity.Player;
 import game.scheduler.Coroutine;
+import game.util.GameUtil;
+
+import java.awt.Color;
 
 public class BulletPatterns {
     private BulletPatterns() {}
@@ -50,6 +51,30 @@ public class BulletPatterns {
                     for (int j = 0; j < bulletsPerTick; j++) {
                         double angle = aim + (j - bulletsPerTick / 2.0) * bulletSpread;
                         bulletPool.pool(boss.x, boss.y, bulletSpeed, angle, 4, new Color(120, 210, 255));
+                    }
+                    yielder.pause(intervalPerTick);
+                }
+            }
+        });
+    }
+
+    public static Coroutine aimedSingle(BulletPool bulletPool, Player player, Enemy enemy) {
+        final int bulletsPerTick = 3;
+        final int cycles = 5;
+        final double bulletSpeed = 5.0, bulletSpread = 0.1;
+        final int intervalPerTick = 3;
+        final int intervalPerLoop = 40;
+
+        return new Coroutine((yielder) -> {
+            while (enemy.hitPoints() > 0 && !GameUtil.isGone(enemy.x, enemy.y)) {
+                yielder.pause(intervalPerLoop);
+
+                for (int i = 0; i < cycles; i++) {
+                    double aim = Math.atan2(player.y - enemy.y, player.x - enemy.x);
+
+                    for (int j = 0; j < bulletsPerTick; j++) {
+                        double angle = aim + (j - bulletsPerTick / 2.0) * bulletSpread;
+                        bulletPool.pool(enemy.x, enemy.y, bulletSpeed, angle, 4, new Color(120, 210, 255));
                     }
                     yielder.pause(intervalPerTick);
                 }

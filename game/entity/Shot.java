@@ -7,7 +7,7 @@ public class Shot extends Entity {
     public Color color() { return color; }
 
     private double vx, vy;
-    private double speed = 10.0;
+    private double speed = 20.0;
 
     private boolean expired;
     public boolean isExpired() { return expired; }
