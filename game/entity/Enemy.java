@@ -13,10 +13,8 @@ public class Enemy extends Entity{
     }
 
     public Enemy(int hitPoints, int radius) {
-        System.out.println(hitPoints);
         this.hitPoints = hitPoints;
         this.maxHitPoints = hitPoints;
-        System.out.println(this.hitPoints);
         this.radius = radius;
     }
 }

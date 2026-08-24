@@ -130,7 +130,7 @@ public class GamePanel extends JPanel {
         graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));
         var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), player.hitPoints());
-        var bossHp = boss != null ? String.format("BossHP %d", boss.hitPoints()) : "";
+        var bossHp = boss != null ? String.format(" BossHP %d", boss.hitPoints()) : "";
         graphics.drawString(scoreBoard + bossHp, 8, ConfigConst.HEIGHT - 12);
     }
 
