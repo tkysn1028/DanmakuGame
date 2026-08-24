@@ -1,6 +1,7 @@
 package game.ui;
 import game.core.Input;
 import game.core.SceneManager;
+import game.entity.Enemy;
 import game.util.ConfigConst;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,6 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Comparator;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -92,6 +95,7 @@ public class GamePanel extends JPanel {
 
     private void drawGame(Graphics2D graphics) {
         var player = sceneManager.game().player;
+        var enemies = sceneManager.game().enemies;
         var boss = sceneManager.game().boss;
         var shots = sceneManager.game().shotPool.all();
         var bullets = sceneManager.game().bulletPool.all();
@@ -104,9 +108,11 @@ public class GamePanel extends JPanel {
             fillCircle(graphics, player.x, player.y, player.radius());
         }
     
-        // Draw boss
+        // Draw Enemy
         graphics.setColor(ColorConst.WHITEYELLOW);
-        fillCircle(graphics, boss.x, boss.y, boss.radius());
+        enemies.forEach(enemy -> {
+            fillCircle(graphics, enemy.x, enemy.y, enemy.radius());
+        });
 
         // Draw bullets
         bullets.forEach((bullet) -> {
@@ -122,9 +128,10 @@ public class GamePanel extends JPanel {
 
         // Draw ScoreBoard
         graphics.setColor(ColorConst.WHITEBLUE);
-        graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));        
-        graphics.drawString(String.format("bullets %4d   PlayerHP %d   BossHP %d", bullets.size(), player.hitPoints(), boss.hitPoints()),
-             8, ConfigConst.HEIGHT - 12);
+        graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));
+        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), player.hitPoints());
+        var bossHp = boss != null ? String.format("BossHP %d", boss.hitPoints()) : "";
+        graphics.drawString(scoreBoard + bossHp, 8, ConfigConst.HEIGHT - 12);
     }
 
     private void drawGameOver(Graphics2D graphics) {

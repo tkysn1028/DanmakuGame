@@ -3,14 +3,14 @@ package game.patterns;
 import java.awt.Color;
 
 import game.bullet.BulletPool;
-import game.entity.Boss;
+import game.entity.Enemy;
 import game.entity.Player;
 import game.scheduler.Coroutine;
 
 public class BulletPatterns {
     private BulletPatterns() {}
 
-    public static Coroutine ringSpiral(BulletPool bulletPool, Boss boss) {
+    public static Coroutine ringSpiral(BulletPool bulletPool, Enemy boss) {
         final int bulletsPerTick = 32;
         final int cycles = 24;
         final double bulletSpeed = 2.2, twistAngle = 0.13;
@@ -33,7 +33,7 @@ public class BulletPatterns {
         });
     }
 
-    public static Coroutine aimedSpread(BulletPool bulletPool, Player player, Boss boss) {
+    public static Coroutine aimedSpread(BulletPool bulletPool, Player player, Enemy boss) {
         final int bulletsPerTick = 5;
         final int cycles = 20;
         final double bulletSpeed = 2.2, bulletSpread = 0.5;

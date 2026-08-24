@@ -3,18 +3,22 @@ package game.core;
 import game.bullet.BulletPool;
 import game.entity.Boss;
 import game.entity.Bullet;
+import game.entity.Enemy;
 import game.entity.Player;
 import game.entity.Shot;
 import game.scheduler.Coroutine;
 import game.scheduler.Scheduler;
 import game.shot.ShotPool;
 import game.util.Collision;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
 public class Game {
     public Player player = new Player();
-    public Boss boss = new Boss();
+    public List<Enemy> enemies = new ArrayList<>();
+    public Enemy boss = null;
     public BulletPool bulletPool = new BulletPool();
     public Scheduler scheduler = new Scheduler();
     public ShotPool shotPool = new ShotPool();
@@ -33,7 +37,7 @@ public class Game {
         bulletPool.update();
         shotPool.update(input, player.x, player.y, frame);
         collideWithBullets(player, bulletPool.all());
-        collideWithShots(boss, shotPool.all());
+        collideWithShots(enemies, shotPool.all());
     }
 
     public boolean isGameOver() {
@@ -51,12 +55,16 @@ public class Game {
         }
     }
 
-    private void collideWithShots(Boss boss, List<Shot> shots) {
-        shots.forEach((shot) -> {
-            if(Collision.check(boss, shot)) {
-                boss.hit();
-                shot.expire();
+    private void collideWithShots(List<Enemy> enemies, List<Shot> shots) {
+       for (Shot shot : shots) {
+            if (shot.isExpired()) continue;
+            for (Enemy e : enemies) {
+                if (Collision.check(e, shot)) {
+                    e.hit();
+                    shot.expire();
+                    break;
+                }
             }
-        });
+        }
     }
 }

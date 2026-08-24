@@ -15,7 +15,7 @@ public class SceneManager {
     private int stageIndex = 0;
 
     private static final List<Function<Game, Coroutine>> STAGES = List.of(
-        Stages::stage1_1
+        Stages::stage1
     );
 
     public void step(Input input, int frame) {
@@ -41,6 +41,7 @@ public class SceneManager {
             }
             case GAMEOVER -> {
                 if(input.confirmPressed) scene = Scene.TITLE;
+                stageIndex = 0;
             }
         }
     }

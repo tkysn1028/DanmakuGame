@@ -1,11 +1,11 @@
 package game.patterns;
 
-import game.entity.Boss;
+import game.entity.Enemy;
 import game.scheduler.Coroutine;
 import game.util.ConfigConst;
 
 public class MovePatterns {
-    public static Coroutine moveBossPendulum(Boss boss) {
+    public static Coroutine moveBossPendulum(Enemy boss) {
         double baseXPosition = ConfigConst.WIDTH / 2.0;
         double baseYPosition = ConfigConst.HEIGHT / 5.0;
         double enterDecelSpeed = 0.985;
