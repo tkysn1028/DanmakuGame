@@ -6,7 +6,7 @@ import game.util.ConfigConst;
 import game.util.GameUtil;
 
 public class MovePatterns {
-    public static Coroutine moveBossPendulum(Enemy boss) {
+    public static Coroutine movePendulum(Enemy boss) {
         double baseXPosition = ConfigConst.WIDTH / 2.0;
         double baseYPosition = ConfigConst.HEIGHT / 5.0;
         double enterDecelSpeed = 0.985;
@@ -43,7 +43,7 @@ public class MovePatterns {
         });
     }
 
-    public static Coroutine moveStraightAndLeftCurveFromTop(Enemy enemy, double fromX) {
+    public static Coroutine moveDownAndCurveLeft(Enemy enemy, double fromX) {
         final double speed = 2.5;
         final double turnY = ConfigConst.HEIGHT / 4.0;
         final double turnRate = 0.03;
@@ -64,7 +64,7 @@ public class MovePatterns {
         });
     }
 
-    public static Coroutine moveStraightAndRightCurveFromTop(Enemy enemy, double fromX) {
+    public static Coroutine moveDownAndCurveRight(Enemy enemy, double fromX) {
         final double speed = 2.5;
         final double turnY = ConfigConst.HEIGHT / 2.0;
         final double turnRate = 0.03;

@@ -15,7 +15,7 @@ public class SceneManager {
     private int stageIndex = 0;
 
     private static final List<Function<Game, Coroutine>> STAGES = List.of(
-        Stages::stage1
+        StagePatterns::stage1
     );
 
     public void step(Input input, int frame) {
