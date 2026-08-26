@@ -1,85 +1,69 @@
 package game.patterns;
 
 import game.entity.Enemy;
+import game.params.move.DownAndCurve;
+import game.params.move.PendulumAndRetrieve;
 import game.scheduler.Coroutine;
-import game.util.ConfigConst;
 import game.util.GameUtil;
 
 public class MovePatterns {
-    public static Coroutine movePendulum(Enemy boss) {
-        double baseXPosition = ConfigConst.WIDTH / 2.0;
-        double baseYPosition = ConfigConst.HEIGHT / 5.0;
-        double enterDecelSpeed = 0.985;
-        double retreatAccelSpeed = 0.02;
-        double swaySpeed = 0.02; 
-        double amplitude = ConfigConst.WIDTH / 4.0;
-
+    public static Coroutine movePendulumAndRetrieve(Enemy enemy, PendulumAndRetrieve param) {
         return new Coroutine((yielder) -> {
             double phase = 0.0;
-            double enterSpeed = 3.5;
-            while (boss.y < baseYPosition) {
-                phase += swaySpeed;
-                boss.x = baseXPosition + Math.sin(phase) * amplitude;
-                boss.y += enterSpeed;
-                enterSpeed *= enterDecelSpeed;
+            double enterSpeed = param.initEnterSpeed;
+            while (enemy.y < param.baseYPosition) {
+                phase += param.swaySpeed;
+                enemy.x = param.baseXPosition + Math.sin(phase) * param.amplitude;
+                enemy.y += enterSpeed;
+                enterSpeed *= param.enterDecelSpeed;
                 yielder.pause(1);
             }
-            boss.y = baseYPosition;
+            enemy.y = param.baseYPosition;
             
-            while (boss.hitPoints() > 0) {
-                phase += swaySpeed;
-                boss.x = baseXPosition + Math.sin(phase) * amplitude;
+            while (enemy.hitPoints() > 0) {
+                phase += param.swaySpeed;
+                enemy.x = param.baseXPosition + Math.sin(phase) * param.amplitude;
                 yielder.pause(1);
             }
 
             double retreatSpeed = 0.0;
-            while (!GameUtil.isGone(boss.x, boss.y)) {
-                phase += swaySpeed;
-                boss.x = baseXPosition + Math.sin(phase) * amplitude;
-                retreatSpeed += retreatAccelSpeed;
-                boss.y -= retreatSpeed;
+            while (!GameUtil.isGone(enemy.x, enemy.y)) {
+                phase += param.swaySpeed;
+                enemy.x = param.baseXPosition + Math.sin(phase) * param.amplitude;
+                retreatSpeed += param.retreatAccelSpeed;
+                enemy.y -= retreatSpeed;
                 yielder.pause(1);
             }
         });
     }
 
-    public static Coroutine moveDownAndCurveLeft(Enemy enemy, double fromX) {
-        final double speed = 2.5;
-        final double turnY = ConfigConst.HEIGHT / 4.0;
-        final double turnRate = 0.03;
-        final double targetAngle = Math.PI;
-
+    public static Coroutine moveDownAndCurveLeft(Enemy enemy, DownAndCurve param) {
         return new Coroutine((yielder) -> {
-            enemy.x = fromX;
+            enemy.x = param.fromX;
             enemy.y = -enemy.radius();
             double angle = Math.PI / 2;
             while (!GameUtil.isGone(enemy.x, enemy.y)) {
-                if (enemy.y > turnY && angle < targetAngle) {
-                    angle = Math.min(angle + turnRate, targetAngle);
+                if (enemy.y > param.turnY && angle < param.targetAngle) {
+                    angle = Math.min(angle + param.turnRate, param.targetAngle);
                 }
-                enemy.x += Math.cos(angle) * speed;
-                enemy.y += Math.sin(angle) * speed;
+                enemy.x += Math.cos(angle) * param.speed;
+                enemy.y += Math.sin(angle) * param.speed;
                 yielder.pause(1);
             }
         });
     }
 
-    public static Coroutine moveDownAndCurveRight(Enemy enemy, double fromX) {
-        final double speed = 2.5;
-        final double turnY = ConfigConst.HEIGHT / 2.0;
-        final double turnRate = 0.03;
-        final double targetAngle = 0;
-
+    public static Coroutine moveDownAndCurveRight(Enemy enemy, DownAndCurve param) {
         return new Coroutine((yielder) -> {
-            enemy.x = fromX;
+            enemy.x = param.fromX;
             enemy.y = -enemy.radius();
             double angle = Math.PI / 2;
             while (!GameUtil.isGone(enemy.x, enemy.y)) {
-                if (enemy.y > turnY && angle > targetAngle) {
-                    angle = Math.max(angle - turnRate, targetAngle);
+                if (enemy.y > param.turnY && angle > 0) {
+                    angle = Math.max(angle - param.turnRate, 0);
                 }
-                enemy.x += Math.cos(angle) * speed;
-                enemy.y += Math.sin(angle) * speed;
+                enemy.x += Math.cos(angle) * param.speed;
+                enemy.y += Math.sin(angle) * param.speed;
                 yielder.pause(1);
             }
         });
