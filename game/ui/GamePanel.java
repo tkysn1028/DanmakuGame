@@ -1,6 +1,6 @@
 package game.ui;
 import game.core.Input;
-import game.core.SceneManager;
+import game.core.GameSession;
 import game.util.ConfigConst;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -18,7 +18,7 @@ public class GamePanel extends JPanel {
     static final Color backGroundColor = ColorConst.DARKBLUE;
     final boolean[] keys = new boolean[256];
     int frame = 0;
-    SceneManager sceneManager = new SceneManager();
+    GameSession gameSession = new GameSession();
     private boolean prevConfirm = false;
 
     public GamePanel() {
@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
         });
         new Timer(16, e -> {
             frame++;
-            sceneManager.step(getInputFromKeys(), frame);
+            gameSession.step(getInputFromKeys(), frame);
             repaint();
         }).start();
     }
@@ -56,7 +56,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g0);
         var graphics = (Graphics2D) g0;
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        switch (sceneManager.scene()) {
+        switch (gameSession.scene()) {
             case TITLE -> drawTitle(graphics);
             case PLAYING -> drawGame(graphics);
             case GAMEOVER -> {
@@ -92,11 +92,11 @@ public class GamePanel extends JPanel {
     }
 
     private void drawGame(Graphics2D graphics) {
-        var player = sceneManager.stage().player;
-        var enemies = sceneManager.stage().enemies;
-        var boss = sceneManager.stage().boss;
-        var shots = sceneManager.stage().shotPool.all();
-        var bullets = sceneManager.stage().bulletPool.all();
+        var player = gameSession.stage().player;
+        var enemies = gameSession.stage().enemies;
+        var boss = gameSession.stage().boss;
+        var shots = gameSession.stage().shotPool.all();
+        var bullets = gameSession.stage().bulletPool.all();
         
         // Draw player
         if(player.iframes() == 0 || (frame / 2) % 2 == 0) {
@@ -132,7 +132,7 @@ public class GamePanel extends JPanel {
         // Draw ScoreBoard
         graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), sceneManager.lives());
+        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), gameSession.lives());
         var bossHp = boss != null ? String.format(" BossHP %d", boss.hitPoints()) : "";
         graphics.drawString(scoreBoard + bossHp, 8, ConfigConst.HEIGHT - 12);
     }

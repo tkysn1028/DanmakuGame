@@ -5,7 +5,7 @@ import java.util.function.Function;
 
 import game.scheduler.Coroutine;
 
-public class SceneManager {
+public class GameSession {
     private Scene scene;
     public Scene scene() { return scene; }
 
@@ -22,7 +22,7 @@ public class SceneManager {
         stageIndex = 0;
     }
 
-    public SceneManager() {
+    public GameSession() {
         init();
     }
 
