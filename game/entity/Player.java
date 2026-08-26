@@ -15,10 +15,6 @@ public class Player extends Entity {
     public void slowDown() { speed = 2.5; }
     public void fastUp() { speed = 5.0; }
 
-    private int hitPoints = 3;
-    public int hitPoints() { return hitPoints; }
-    public void hit() { if( hitPoints > 0) hitPoints--; }
-
     private int iframes = 0;
     public int iframes() { return iframes; }
     public void setIframes() { iframes = 90; }

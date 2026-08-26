@@ -27,6 +27,14 @@ public class Stage {
     public void stageClear() { stageCleared = true; }
     public boolean isStageCleared() { return stageCleared; }
 
+    private boolean isPlayerHit = false;
+    public boolean isPlayerHit() { 
+        var out = isPlayerHit;
+        isPlayerHit = false;
+        return out;
+    }
+    public void hit() { isPlayerHit = true; }
+
     public Stage(Function<Stage, Coroutine> stageScript) {
         scheduler.add(stageScript.apply(this));
     }
@@ -41,15 +49,11 @@ public class Stage {
         enemies.removeIf(e -> e.hitPoints() == 0 || GameUtil.isGone(e.x, e.y));
     }
 
-    public boolean isGameOver() {
-        return player.hitPoints() == 0;
-    }
-
     private void collideWithBullets(Player player, List<Bullet> bullets) {
         if(player.iframes() == 0) {
             bullets.forEach(bullet -> {
                 if(Collision.check(player, bullet)) {
-                    player.hit();
+                    hit();
                     player.setIframes();
                 }
             });
