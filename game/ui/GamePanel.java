@@ -1,7 +1,6 @@
 package game.ui;
 import game.core.Input;
 import game.core.SceneManager;
-import game.entity.Enemy;
 import game.util.ConfigConst;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +10,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Comparator;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -99,7 +97,7 @@ public class GamePanel extends JPanel {
         var boss = sceneManager.game().boss;
         var shots = sceneManager.game().shotPool.all();
         var bullets = sceneManager.game().bulletPool.all();
-
+        
         // Draw player
         if(sceneManager.game().player.iframes() == 0 || (frame / 2) % 2 == 0) {
             graphics.setColor(ColorConst.WHITE);

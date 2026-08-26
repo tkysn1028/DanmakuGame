@@ -1,7 +1,6 @@
 package game.core;
 
 import game.bullet.BulletPool;
-import game.entity.Boss;
 import game.entity.Bullet;
 import game.entity.Enemy;
 import game.entity.Player;

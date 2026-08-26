@@ -13,14 +13,14 @@ import java.awt.Color;
 public class BulletPatterns {
     private BulletPatterns() {}
 
-    public static Coroutine ringSpiral(BulletPool bulletPool, Enemy boss, Spiral param) {
+    public static Coroutine ringSpiral(BulletPool bulletPool, Enemy enemy, Spiral param) {
         return new Coroutine((yielder) -> {
             double baseAngle = 0;
-            while (boss.hitPoints() > 0) {
+            while (enemy.hitPoints() > 0) {
                 for (int i = 0; i < param.cycles; i++) {
                     for (int j = 0; j < param.bulletsPerTick; j++) {
                         double angle = baseAngle + j * Math.PI * 2 / param.bulletsPerTick;
-                        bulletPool.pool(boss.x, boss.y, param.bulletSpeed, angle, 4, Color.pink);
+                        bulletPool.pool(enemy.x, enemy.y, param.bulletSpeed, angle, 4, Color.pink);
                     }
                     baseAngle += param.twistAngle;
                     yielder.pause(param.intervalPerTick);
