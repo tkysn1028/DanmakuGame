@@ -92,14 +92,14 @@ public class GamePanel extends JPanel {
     }
 
     private void drawGame(Graphics2D graphics) {
-        var player = sceneManager.game().player;
-        var enemies = sceneManager.game().enemies;
-        var boss = sceneManager.game().boss;
-        var shots = sceneManager.game().shotPool.all();
-        var bullets = sceneManager.game().bulletPool.all();
+        var player = sceneManager.stage().player;
+        var enemies = sceneManager.stage().enemies;
+        var boss = sceneManager.stage().boss;
+        var shots = sceneManager.stage().shotPool.all();
+        var bullets = sceneManager.stage().bulletPool.all();
         
         // Draw player
-        if(sceneManager.game().player.iframes() == 0 || (frame / 2) % 2 == 0) {
+        if(player.iframes() == 0 || (frame / 2) % 2 == 0) {
             graphics.setColor(ColorConst.WHITE);
             drawCircle(graphics, player.x, player.y, player.radius() * 2.5);
             graphics.setColor(ColorConst.RED);

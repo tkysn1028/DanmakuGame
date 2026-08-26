@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-public class Game {
+public class Stage {
     public Player player = new Player();
     public List<Enemy> enemies = new ArrayList<>();
     public Enemy boss = null;
@@ -23,11 +23,11 @@ public class Game {
     public Scheduler scheduler = new Scheduler();
     public ShotPool shotPool = new ShotPool();
 
-    private boolean gameCleared = false;
-    public void gameClear() { gameCleared = true; }
-    public boolean isGameCleared() { return gameCleared; }
+    private boolean stageCleared = false;
+    public void stageClear() { stageCleared = true; }
+    public boolean isStageCleared() { return stageCleared; }
 
-    public Game(Function<Game, Coroutine> stageScript) {
+    public Stage(Function<Stage, Coroutine> stageScript) {
         scheduler.add(stageScript.apply(this));
     }
     

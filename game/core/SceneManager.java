@@ -9,12 +9,12 @@ public class SceneManager {
     private Scene scene = Scene.TITLE;
     public Scene scene() { return scene; }
 
-    private Game game;
-    public Game game() { return game; }
+    private Stage stage;
+    public Stage stage() { return stage; }
 
-    private int stageIndex = 0;
+    private int stageIndex;
 
-    private static final List<Function<Game, Coroutine>> STAGES = List.of(
+    private static final List<Function<Stage, Coroutine>> STAGES = List.of(
         StagePatterns::stage1
     );
 
@@ -22,22 +22,22 @@ public class SceneManager {
         switch (scene) {
             case TITLE -> {
                 if (input.confirmPressed) {
-                    game = new Game(STAGES.get(stageIndex));
+                    stage = new Stage(STAGES.get(stageIndex));
                     scene = Scene.PLAYING;
                 }
             }
             case PLAYING -> {
-                game.step(input, frame);
-                if (game.isGameCleared()) {
+                stage.step(input, frame);
+                if (stage.isStageCleared()) {
                     stageIndex++;
                     if(stageIndex < STAGES.size()) {
-                        game = new Game(STAGES.get(stageIndex));
+                        stage = new Stage(STAGES.get(stageIndex));
                         scene = Scene.PLAYING;
                     } else {
                         scene = Scene.GAMEOVER;
                     }
                 }
-                if (game.isGameOver()) scene = Scene.GAMEOVER;
+                if (stage.isGameOver()) scene = Scene.GAMEOVER;
             }
             case GAMEOVER -> {
                 if(input.confirmPressed) scene = Scene.TITLE;
