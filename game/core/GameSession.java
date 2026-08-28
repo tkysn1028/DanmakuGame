@@ -3,6 +3,7 @@ package game.core;
 import java.util.List;
 import java.util.function.Function;
 
+import game.patterns.StagePatterns;
 import game.scheduler.Coroutine;
 
 public class GameSession {
@@ -13,12 +14,13 @@ public class GameSession {
     public Stage stage() { return stage; }
 
     private int stageIndex;
+
     private int lives;
     public int lives() { return lives; }
 
     public void init() {
         scene = Scene.TITLE;
-        lives = 5;
+        lives = 1;
         stageIndex = 0;
     }
 
@@ -30,7 +32,7 @@ public class GameSession {
         StagePatterns::stage1
     );
 
-    public void step(Input input, int frame) {
+    public void update(Input input, int frame) {
         switch (scene) {
             case TITLE -> {
                 if (input.confirmPressed) {
@@ -39,7 +41,7 @@ public class GameSession {
                 }
             }
             case PLAYING -> {
-                stage.step(input, frame);
+                stage.update(input, frame);
                 if(stage.isPlayerHit()) {
                     lives--;
                     if (lives <= 0) {
@@ -47,7 +49,7 @@ public class GameSession {
                         break;
                     }
                 }
-                if (stage.isStageCleared()) {
+                if (stage.isCleared()) {
                     stageIndex++;
                     if(stageIndex < STAGES.size()) {
                         stage = new Stage(STAGES.get(stageIndex));

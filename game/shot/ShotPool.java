@@ -11,10 +11,6 @@ public class ShotPool {
     private List<Shot> shots = new ArrayList<>();
     private int shotInterval = 8;
 
-    public void pool(double x, double y) {
-        shots.add(new Shot(x, y));
-    }
-
     public void update(Input input, double x, double y, int frame) {
         shots.forEach(s -> s.update());
         if(input.shot && frame % shotInterval == 0) shots.add(new Shot(x, y));

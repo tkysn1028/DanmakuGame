@@ -43,8 +43,8 @@ public class MovePatterns {
             enemy.y = -enemy.radius();
             double angle = Math.PI / 2;
             while (!GameUtil.isGone(enemy.x, enemy.y)) {
-                if (enemy.y > param.turnY && angle < param.targetAngle) {
-                    angle = Math.min(angle + param.turnRate, param.targetAngle);
+                if (enemy.y > param.turnY && angle < Math.PI) {
+                    angle = Math.min(angle + param.turnRate, Math.PI);
                 }
                 enemy.x += Math.cos(angle) * param.speed;
                 enemy.y += Math.sin(angle) * param.speed;

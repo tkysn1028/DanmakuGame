@@ -1,11 +1,10 @@
-package game.core;
+package game.patterns;
+import game.core.Stage;
 import game.entity.Enemy;
 import game.params.bullet.Spiral;
 import game.params.bullet.Spread;
 import game.params.move.DownAndCurve;
 import game.params.move.PendulumAndRetrieve;
-import game.patterns.BulletPatterns;
-import game.patterns.MovePatterns;
 import game.scheduler.Coroutine;
 import game.util.ConfigConst;
 import game.util.GameUtil;
@@ -29,7 +28,7 @@ public class StagePatterns {
                     .cycles(24)
                     .speed(2.2)
                     .twistAngle(0.13)
-                    .interval(6, 70)));
+                    .interval(0, 6, 70)));
             stage.scheduler.add(BulletPatterns.aimedSpread(stage.bulletPool, stage.player, boss, new Spread()
                     .bulletsPerTick(5)
                     .cycles(20)
@@ -45,7 +44,7 @@ public class StagePatterns {
                 stage.enemies.add(enemy);
                 stage.scheduler.add(MovePatterns.moveDownAndCurveRight(enemy, new DownAndCurve()
                         .fromX(500)
-                        .turnY(ConfigConst.HEIGHT / 4.0)
+                        .turnY(ConfigConst.HEIGHT / 2.0)
                         .speed(2.5)
                         .turnRate(0.03)));
                 stage.scheduler.add(BulletPatterns.aimedSpread(stage.bulletPool, stage.player, enemy, new Spread()
@@ -64,8 +63,7 @@ public class StagePatterns {
                         .fromX(800)
                         .turnY(ConfigConst.HEIGHT / 4.0)
                         .speed(2.5)
-                        .turnRate(0.03)
-                        .targetAngle(Math.PI)));
+                        .turnRate(0.03)));
                 stage.scheduler.add(BulletPatterns.aimedSpread(stage.bulletPool, stage.player, enemy, new Spread()
                         .bulletsPerTick(5)
                         .cycles(20)
@@ -75,12 +73,10 @@ public class StagePatterns {
                 yielder.pause(20);
             }
 
-            while (!stage.enemies.isEmpty()) {
-                yielder.pause(1);
-            }
+            while (!stage.enemies.isEmpty()) yielder.pause(1);
+
             // １回目のボス
             var boss2 = new Enemy(15, 30);
-            stage.enemies.add(boss2);
             stage.boss = boss2;
             stage.scheduler.add(MovePatterns.movePendulumAndRetrieve(boss2, new PendulumAndRetrieve()
                     .baseXPosition(ConfigConst.WIDTH / 2.0)
@@ -95,7 +91,7 @@ public class StagePatterns {
                     .cycles(24)
                     .speed(2.2)
                     .twistAngle(0.13)
-                    .interval(6, 70)));
+                    .interval(90, 6, 70)));
             stage.scheduler.add(BulletPatterns.aimedSpread(stage.bulletPool, stage.player, boss2, new Spread()
                     .bulletsPerTick(5)
                     .cycles(20)
@@ -105,7 +101,7 @@ public class StagePatterns {
             while (!GameUtil.isGone(boss2.x, boss2.y)) yielder.pause(1);
             stage.enemies.remove(boss2);
             stage.boss = null;
-            stage.stageClear();
+            stage.clear();
         });
     }
 }

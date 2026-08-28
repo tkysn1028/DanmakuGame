@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
         });
         new Timer(16, e -> {
             frame++;
-            gameSession.step(getInputFromKeys(), frame);
+            gameSession.update(getInputFromKeys(), frame);
             repaint();
         }).start();
     }

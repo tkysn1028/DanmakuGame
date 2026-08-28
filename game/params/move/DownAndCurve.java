@@ -11,5 +11,4 @@ public class DownAndCurve {
     public DownAndCurve turnY(double turnY) { this.turnY = turnY; return this; }
     public DownAndCurve speed(double speed) { this.speed = speed; return this; }
     public DownAndCurve turnRate(double turnRate) { this.turnRate = turnRate; return this; }
-    public DownAndCurve targetAngle(double targetAngle) { this.targetAngle = targetAngle; return this; }
 }

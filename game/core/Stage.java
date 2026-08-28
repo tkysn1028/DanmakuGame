@@ -8,7 +8,6 @@ import game.entity.Shot;
 import game.scheduler.Coroutine;
 import game.scheduler.Scheduler;
 import game.shot.ShotPool;
-import game.util.Collision;
 import game.util.GameUtil;
 
 import java.util.ArrayList;
@@ -23,9 +22,9 @@ public class Stage {
     public Scheduler scheduler = new Scheduler();
     public ShotPool shotPool = new ShotPool();
 
-    private boolean stageCleared = false;
-    public void stageClear() { stageCleared = true; }
-    public boolean isStageCleared() { return stageCleared; }
+    private boolean cleared = false;
+    public void clear() { cleared = true; }
+    public boolean isCleared() { return cleared; }
 
     private boolean isPlayerHit = false;
     public boolean isPlayerHit() { 
@@ -39,7 +38,7 @@ public class Stage {
         scheduler.add(stageScript.apply(this));
     }
     
-    public void step(Input input, int frame) {
+    public void update(Input input, int frame) {
         scheduler.tick();
         player.update(input);
         bulletPool.update();
@@ -52,7 +51,7 @@ public class Stage {
     private void collideWithBullets(Player player, List<Bullet> bullets) {
         if(player.iframes() == 0) {
             bullets.forEach(bullet -> {
-                if(Collision.check(player, bullet)) {
+                if(GameUtil.collisionCheck(player, bullet)) {
                     hit();
                     player.setIframes();
                 }
@@ -63,13 +62,13 @@ public class Stage {
     private void collideWithShots(List<Enemy> enemies, Enemy boss, List<Shot> shots) {
        for (Shot shot : shots) {
             if (shot.isExpired()) continue;
-            if (boss != null && Collision.check(boss, shot)) {
+            if (boss != null && GameUtil.collisionCheck(boss, shot)) {
                 boss.hit();
                 shot.expire();
                 continue;
             }
             for (Enemy e : enemies) {
-                if (Collision.check(e, shot)) {
+                if (GameUtil.collisionCheck(e, shot)) {
                     e.hit();
                     shot.expire();
                     break;
