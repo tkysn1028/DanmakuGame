@@ -7,6 +7,8 @@ public class GameSession {
     private DanmakuMode danmaku;
     public DanmakuMode danmaku() { return danmaku; }
 
+    private BattleType battleType = BattleType.REGIST_NORMAL_MOONSHOT; // TODO:別ゲームから注入するように要修正
+
     public void init() {
         scene = Scene.TITLE;
     }
@@ -19,13 +21,15 @@ public class GameSession {
         switch (scene) {
             case TITLE -> {
                 if (input.confirmPressed) {
-                    danmaku = new DanmakuMode(0, 11);
+                    danmaku = new DanmakuMode(battleType, 11);  // TODO:別ゲームから注入するように要修正
                     scene = Scene.DANMAKU_PLAYING;
                 }
             }
             case DANMAKU_PLAYING -> {
-                if (danmaku.update(input, frame) == Result.FAILED) {
-                    scene = Scene.GAMEOVER;
+                switch (danmaku.update(input, frame)) {
+                    case FAILED  -> scene = Scene.GAMEOVER;
+                    case CLEARED -> scene = Scene.GAMEOVER;
+                    case RUNNING -> { }
                 }
             }
             case GAMEOVER -> {

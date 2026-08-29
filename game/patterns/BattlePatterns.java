@@ -6,7 +6,7 @@ import game.scheduler.Coroutine;
 import game.util.GameUtil;
 
 public class BattlePatterns {
-    public static Coroutine battle1(Battle battle, Battle1 battle1Param) {
+    public static Coroutine battleRegistNormalMoonShot(Battle battle, Battle1 battle1Param) {
         return new Coroutine((yielder) -> {
             // １回目のボス
             var boss = new Enemy()

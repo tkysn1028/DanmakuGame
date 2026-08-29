@@ -1,5 +1,6 @@
 package game.ui;
 import game.core.Input;
+import game.core.BattleType;
 import game.core.GameSession;
 import game.util.ConfigConst;
 import java.awt.Color;
@@ -58,9 +59,9 @@ public class GamePanel extends JPanel {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         switch (gameSession.scene()) {
             case TITLE -> drawTitle(graphics);
-            case DANMAKU_PLAYING -> drawGame(graphics);
+            case DANMAKU_PLAYING -> drawDanmakuGame(graphics);
             case GAMEOVER -> {
-                drawGame(graphics);
+                drawDanmakuGame(graphics);
                 drawGameOver(graphics);
             }
         }
@@ -91,7 +92,7 @@ public class GamePanel extends JPanel {
         drawCentered(graphics, "ARROW: MOVE    SHIFT: SLOW    Z: SHOT", ConfigConst.HEIGHT - 40);
     }
 
-    private void drawGame(Graphics2D graphics) {
+    private void drawDanmakuGame(Graphics2D graphics) {
         var danmaku = gameSession.danmaku();
         var player = danmaku.battle().player;
         var enemies = danmaku.battle().enemies;
