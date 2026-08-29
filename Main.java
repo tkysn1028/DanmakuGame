@@ -1,4 +1,4 @@
-import game.ui.GamePanel;
+import game.battle.ui.GamePanel;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
