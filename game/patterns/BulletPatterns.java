@@ -20,7 +20,7 @@ public class BulletPatterns {
                 for (int i = 0; i < param.cycles; i++) {
                     for (int j = 0; j < param.bulletsPerTick; j++) {
                         double angle = baseAngle + j * Math.PI * 2 / param.bulletsPerTick;
-                        bulletPool.pool(enemy.x, enemy.y, param.bulletSpeed, angle, 4, BulletType.smallCirclePink);
+                        bulletPool.pool(enemy.x, enemy.y, param.bulletSpeed, angle, BulletType.SMALL_CIRCLE_PINK);
                     }
                     baseAngle += param.twistAngle;
                     yielder.pause(param.intervalPerTick);
@@ -38,7 +38,7 @@ public class BulletPatterns {
                     double aim = Math.atan2(player.y - enemy.y, player.x - enemy.x);
                     for (int j = 0; j < param.bulletsPerTick; j++) {
                         double angle = aim + (j - param.bulletsPerTick / 2.0) * param.bulletSpread;
-                        bulletPool.pool(enemy.x, enemy.y, param.bulletSpeed, angle, 4, BulletType.smallCircleLightBlue);
+                        bulletPool.pool(enemy.x, enemy.y, param.bulletSpeed, angle, BulletType.SMALL_CIRCLE_LIGHT_BLUE);
                     }
                     yielder.pause(param.intervalPerTick);
                 }

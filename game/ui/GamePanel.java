@@ -121,18 +121,13 @@ public class GamePanel extends JPanel {
 
         // Draw bullets
         bullets.forEach((bullet) -> {
-            switch (bullet.bulletType()) {
-                case BulletType.smallCirclePink -> graphics.setColor(Color.PINK);
-                case BulletType.smallCircleLightBlue -> graphics.setColor(new Color(120, 210, 255));
-            }
+            graphics.setColor(BulletColors.of(bullet.bulletType()));
             fillCircle(graphics, bullet.x, bullet.y, bullet.radius());
         });
 
         // Draw Shots
         shots.forEach((shot) -> {
-            switch (shot.shotType()) {
-                case ShotType.smallSquareMagenta -> graphics.setColor(Color.MAGENTA);
-            }
+            ShotColors.of(shot.shotType());
             graphics.fillRect((int)(shot.x - 2), (int)(shot.y - 8), shot.radius(), shot.radius());
         });
 

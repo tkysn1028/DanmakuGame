@@ -8,10 +8,10 @@ public class Bullet extends Entity {
 
     private double vx, vy;
 
-    public Bullet(double x, double y, double speed, double angle, int radius, BulletType bulletType) {
+    public Bullet(double x, double y, double speed, double angle, BulletType bulletType) {
         this.x = x;
         this.y = y;
-        this.radius = radius;
+        this.radius = bulletType.radius();
         this.bulletType = bulletType;
         this.vx = speed * Math.cos(angle);
         this.vy = speed * Math.sin(angle);

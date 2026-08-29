@@ -2,7 +2,7 @@ package game.entity;
 import game.shot.ShotType;
 
 public class Shot extends Entity {
-    private ShotType shotType = ShotType.smallSquareMagenta;
+    private ShotType shotType = ShotType.SMALL_SQUARE_MAGENTA;
     public ShotType shotType() { return shotType; }
 
     private double vx, vy;
@@ -17,7 +17,7 @@ public class Shot extends Entity {
         this.y = y;
         this.vx = speed * Math.cos(Math.PI / -2);
         this.vy = speed * Math.sin(Math.PI / -2);
-        this.radius = 4;
+        this.radius = shotType.radius();
     }
 
     public void update() {

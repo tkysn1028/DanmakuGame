@@ -9,8 +9,8 @@ import game.util.GameUtil;
 public class BulletPool {
     private List<Bullet> bullets = new ArrayList<>();
 
-    public void pool(double x, double y, double speed, double angle, int r, BulletType bt) {
-        bullets.add(new Bullet(x, y, speed, angle, r, bt));
+    public void pool(double x, double y, double speed, double angle, BulletType bt) {
+        bullets.add(new Bullet(x, y, speed, angle, bt));
     }
 
     public void update() {
