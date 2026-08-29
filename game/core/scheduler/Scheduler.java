@@ -1,4 +1,4 @@
-package game.battle.scheduler;
+package game.core.scheduler;
 
 import java.util.ArrayList;
 import java.util.Iterator;

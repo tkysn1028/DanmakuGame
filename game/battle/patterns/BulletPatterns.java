@@ -6,8 +6,8 @@ import game.battle.entity.Enemy;
 import game.battle.entity.Player;
 import game.battle.params.bullet.Spiral;
 import game.battle.params.bullet.Spread;
-import game.battle.scheduler.Coroutine;
-import game.battle.util.GameUtil;
+import game.core.scheduler.Coroutine;
+import game.core.util.GameUtil;
 
 public class BulletPatterns {
     private BulletPatterns() {}

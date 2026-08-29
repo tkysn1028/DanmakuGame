@@ -1,4 +1,4 @@
-package game.battle.scheduler;
+package game.core.scheduler;
 
 import java.util.concurrent.SynchronousQueue;
 

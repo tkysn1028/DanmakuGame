@@ -6,10 +6,11 @@ import game.battle.entity.Enemy;
 import game.battle.entity.Player;
 import game.battle.entity.Shot;
 import game.battle.params.init.InitBattleParam;
-import game.battle.scheduler.Coroutine;
-import game.battle.scheduler.Scheduler;
 import game.battle.shot.ShotPool;
-import game.battle.util.GameUtil;
+import game.battle.util.BattleUtil;
+import game.core.scheduler.Coroutine;
+import game.core.scheduler.Scheduler;
+import game.core.util.GameUtil;
 
 import java.util.List;
 import java.util.function.Function;
@@ -52,7 +53,7 @@ public class Battle {
     private void collideWithBullets(Player player, List<Bullet> bullets) {
         if(player.iframes() == 0) {
             bullets.forEach(bullet -> {
-                if(GameUtil.collisionCheck(player, bullet)) {
+                if(BattleUtil.collisionCheck(player, bullet)) {
                     hit();
                     player.setIframes();
                 }
@@ -63,13 +64,13 @@ public class Battle {
     private void collideWithShots(List<Enemy> enemies, Enemy boss, List<Shot> shots) {
        for (Shot shot : shots) {
             if (shot.isExpired()) continue;
-            if (boss != null && GameUtil.collisionCheck(boss, shot)) {
+            if (boss != null && BattleUtil.collisionCheck(boss, shot)) {
                 boss.hit();
                 shot.expire();
                 continue;
             }
             for (Enemy e : enemies) {
-                if (GameUtil.collisionCheck(e, shot)) {
+                if (BattleUtil.collisionCheck(e, shot)) {
                     e.hit();
                     shot.expire();
                     break;

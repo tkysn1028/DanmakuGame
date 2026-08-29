@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import game.battle.entity.Bullet;
-import game.battle.util.GameUtil;
+import game.core.util.GameUtil;
 
 public class BulletPool {
     private List<Bullet> bullets = new ArrayList<>();

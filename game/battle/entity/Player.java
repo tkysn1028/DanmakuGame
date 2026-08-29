@@ -1,7 +1,7 @@
 package game.battle.entity;
 import game.battle.core.Input;
-import game.battle.util.ConfigConst;
-import game.battle.util.MathUtil;
+import game.core.util.ConfigConst;
+import game.core.util.MathUtil;
 
 public class Player extends Entity {
     public Player() { this.radius = 4; this.diagonalSpeedRate = 0.7071; this.speed = 5.0; this.iframes = 0; this.clampRate = 2.5; }

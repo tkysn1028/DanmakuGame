@@ -1,4 +1,4 @@
-package game.battle.util;
+package game.core.util;
 
 public class MathUtil {
     public static double clamp(double value, double min, double max) {

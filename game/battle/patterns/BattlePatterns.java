@@ -2,8 +2,8 @@ package game.battle.patterns;
 import game.battle.core.Battle;
 import game.battle.entity.Enemy;
 import game.battle.params.battle.Battle1;
-import game.battle.scheduler.Coroutine;
-import game.battle.util.GameUtil;
+import game.core.scheduler.Coroutine;
+import game.core.util.GameUtil;
 
 public class BattlePatterns {
     public static Coroutine battleRegistNormalMoonShot(Battle battle, Battle1 battle1Param) {

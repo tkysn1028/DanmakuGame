@@ -3,8 +3,8 @@ package game.battle.patterns;
 import game.battle.entity.Enemy;
 import game.battle.params.move.DownAndCurve;
 import game.battle.params.move.PendulumAndRetrieve;
-import game.battle.scheduler.Coroutine;
-import game.battle.util.GameUtil;
+import game.core.scheduler.Coroutine;
+import game.core.util.GameUtil;
 
 public class MovePatterns {
     public static Coroutine movePendulumAndRetrieve(Enemy enemy, PendulumAndRetrieve param) {

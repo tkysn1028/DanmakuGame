@@ -4,7 +4,7 @@ import game.battle.params.bullet.Spiral;
 import game.battle.params.bullet.Spread;
 import game.battle.params.move.DownAndCurve;
 import game.battle.params.move.PendulumAndRetrieve;
-import game.battle.util.ConfigConst;
+import game.core.util.ConfigConst;
 
 public class Battle1 {
     public PendulumAndRetrieve pendulumAndRetrieve;

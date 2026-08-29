@@ -5,7 +5,7 @@ import java.util.List;
 
 import game.battle.core.Input;
 import game.battle.entity.Shot;
-import game.battle.util.GameUtil;
+import game.core.util.GameUtil;
 
 public class ShotPool {
     private List<Shot> shots = new ArrayList<>();

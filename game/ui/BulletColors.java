@@ -1,4 +1,4 @@
-package game.battle.ui;
+package game.ui;
 
 import java.awt.Color;
 import java.util.EnumMap;

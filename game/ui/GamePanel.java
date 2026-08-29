@@ -1,8 +1,8 @@
-package game.battle.ui;
+package game.ui;
 import game.battle.core.Input;
-import game.battle.core.BattleType;
+import game.core.util.ConfigConst;
 import game.battle.core.GameSession;
-import game.battle.util.ConfigConst;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;

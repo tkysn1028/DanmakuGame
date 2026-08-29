@@ -5,7 +5,7 @@ import java.util.function.Function;
 
 import game.battle.params.battle.Battle1;
 import game.battle.patterns.BattlePatterns;
-import game.battle.scheduler.Coroutine;
+import game.core.scheduler.Coroutine;
 
 public class DanmakuMode {
     private static final Map<BattleType, Function<Battle, Coroutine>> BATTLES = Map.of(

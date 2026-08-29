@@ -6,9 +6,9 @@ import java.util.List;
 import game.battle.bullet.BulletPool;
 import game.battle.entity.Enemy;
 import game.battle.entity.Player;
-import game.battle.scheduler.Scheduler;
 import game.battle.shot.ShotPool;
-import game.battle.util.ConfigConst;
+import game.core.scheduler.Scheduler;
+import game.core.util.ConfigConst;
 
 public class InitBattleParam {
     public Player player;

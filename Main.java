@@ -1,6 +1,7 @@
-import game.battle.ui.GamePanel;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+
+import game.ui.GamePanel;
 
 public class Main {
     public static void main(String[] args) {
