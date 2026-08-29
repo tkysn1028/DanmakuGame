@@ -1,10 +1,9 @@
 package game.entity;
-
-import java.awt.Color;
+import game.shot.ShotType;
 
 public class Shot extends Entity {
-    private Color color = Color.MAGENTA;
-    public Color color() { return color; }
+    private ShotType shotType = ShotType.smallSquareMagenta;
+    public ShotType shotType() { return shotType; }
 
     private double vx, vy;
     private double speed = 20.0;

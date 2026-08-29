@@ -1,5 +1,6 @@
 package game.ui;
 import game.core.Input;
+import game.shot.ShotType;
 import game.bullet.BulletType;
 import game.core.GameSession;
 import game.util.ConfigConst;
@@ -129,7 +130,9 @@ public class GamePanel extends JPanel {
 
         // Draw Shots
         shots.forEach((shot) -> {
-            graphics.setColor(shot.color());
+            switch (shot.shotType()) {
+                case ShotType.smallSquareMagenta -> graphics.setColor(Color.MAGENTA);
+            }
             graphics.fillRect((int)(shot.x - 2), (int)(shot.y - 8), shot.radius(), shot.radius());
         });
 
