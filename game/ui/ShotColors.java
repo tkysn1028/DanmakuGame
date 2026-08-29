@@ -3,7 +3,8 @@ package game.ui;
 import java.awt.Color;
 import java.util.EnumMap;
 import java.util.Map;
-import game.battle.shot.ShotType;
+
+import game.battle.enums.ShotType;
 
 public class ShotColors {
     

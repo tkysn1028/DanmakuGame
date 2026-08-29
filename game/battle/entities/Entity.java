@@ -1,4 +1,4 @@
-package game.battle.entity;
+package game.battle.entities;
 
 public class Entity {
     public double x, y;

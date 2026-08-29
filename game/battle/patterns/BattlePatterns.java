@@ -1,6 +1,6 @@
 package game.battle.patterns;
 import game.battle.core.Battle;
-import game.battle.entity.Enemy;
+import game.battle.entities.Enemy;
 import game.battle.params.battle.Battle1;
 import game.core.scheduler.Coroutine;
 import game.core.util.GameUtil;

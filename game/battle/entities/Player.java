@@ -1,5 +1,5 @@
-package game.battle.entity;
-import game.battle.core.Input;
+package game.battle.entities;
+import game.common.Input;
 import game.core.util.ConfigConst;
 import game.core.util.MathUtil;
 

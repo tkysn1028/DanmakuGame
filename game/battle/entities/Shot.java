@@ -1,5 +1,5 @@
-package game.battle.entity;
-import game.battle.shot.ShotType;
+package game.battle.entities;
+import game.battle.enums.ShotType;
 
 public class Shot extends Entity {
     private ShotType shotType = ShotType.SMALL_SQUARE_MAGENTA;

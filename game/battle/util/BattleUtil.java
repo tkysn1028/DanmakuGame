@@ -1,6 +1,6 @@
 package game.battle.util;
 
-import game.battle.entity.Entity;
+import game.battle.entities.Entity;
 
 public class BattleUtil {
     public static boolean collisionCheck(Entity e1, Entity e2) {

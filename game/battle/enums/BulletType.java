@@ -1,4 +1,4 @@
-package game.battle.bullet;
+package game.battle.enums;
 
 public enum BulletType {
     SMALL_CIRCLE_PINK(4),

@@ -1,5 +1,5 @@
-package game.battle.entity;
-import game.battle.bullet.BulletType;
+package game.battle.entities;
+import game.battle.enums.BulletType;
 
 public class Bullet extends Entity {
     

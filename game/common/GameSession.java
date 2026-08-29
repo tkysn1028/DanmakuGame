@@ -1,4 +1,7 @@
-package game.battle.core;
+package game.common;
+
+import game.battle.core.BattleMode;
+import game.common.enums.Scene;
 
 public class GameSession {
     private Scene scene;

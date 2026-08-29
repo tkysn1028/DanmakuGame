@@ -1,10 +1,9 @@
-package game.battle.shot;
+package game.battle.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import game.battle.core.Input;
-import game.battle.entity.Shot;
+import game.common.Input;
 import game.core.util.GameUtil;
 
 public class ShotPool {

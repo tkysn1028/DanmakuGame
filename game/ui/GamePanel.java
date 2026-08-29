@@ -1,7 +1,7 @@
 package game.ui;
-import game.battle.core.Input;
+import game.common.GameSession;
+import game.common.Input;
 import game.core.util.ConfigConst;
-import game.battle.core.GameSession;
 
 import java.awt.Color;
 import java.awt.Dimension;

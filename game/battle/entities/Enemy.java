@@ -1,4 +1,4 @@
-package game.battle.entity;
+package game.battle.entities;
 
 public class Enemy extends Entity{
     private int hitPoints;

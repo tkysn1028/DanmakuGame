@@ -1,9 +1,9 @@
 package game.battle.patterns;
 
-import game.battle.bullet.BulletPool;
-import game.battle.bullet.BulletType;
-import game.battle.entity.Enemy;
-import game.battle.entity.Player;
+import game.battle.entities.BulletPool;
+import game.battle.entities.Enemy;
+import game.battle.entities.Player;
+import game.battle.enums.BulletType;
 import game.battle.params.bullet.Spiral;
 import game.battle.params.bullet.Spread;
 import game.core.scheduler.Coroutine;

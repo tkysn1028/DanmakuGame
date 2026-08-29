@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.EnumMap;
 import java.util.Map;
 
-import game.battle.bullet.BulletType;
+import game.battle.enums.BulletType;
 
 public final class BulletColors {
 

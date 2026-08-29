@@ -1,9 +1,9 @@
-package game.battle.bullet;
+package game.battle.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import game.battle.entity.Bullet;
+import game.battle.enums.BulletType;
 import game.core.util.GameUtil;
 
 public class BulletPool {

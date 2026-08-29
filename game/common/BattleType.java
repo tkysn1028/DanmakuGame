@@ -1,4 +1,4 @@
-package game.battle.core;
+package game.common;
 
 public enum BattleType {
     REGIST_NORMAL_MOONSHOT;

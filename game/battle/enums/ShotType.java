@@ -1,4 +1,4 @@
-package game.battle.shot;
+package game.battle.enums;
 
 public enum ShotType {
     SMALL_SQUARE_MAGENTA(4);

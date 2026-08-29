@@ -1,6 +1,6 @@
 package game.battle.patterns;
 
-import game.battle.entity.Enemy;
+import game.battle.entities.Enemy;
 import game.battle.params.move.DownAndCurve;
 import game.battle.params.move.PendulumAndRetrieve;
 import game.core.scheduler.Coroutine;
