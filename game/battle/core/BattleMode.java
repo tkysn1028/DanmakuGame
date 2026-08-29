@@ -6,8 +6,8 @@ import java.util.function.Function;
 import game.battle.enums.Result;
 import game.battle.params.battle.Battle1;
 import game.battle.patterns.BattlePatterns;
-import game.common.BattleType;
 import game.common.Input;
+import game.common.enums.BattleType;
 import game.core.scheduler.Coroutine;
 
 public class BattleMode {

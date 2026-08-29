@@ -1,6 +1,7 @@
 package game.common;
 
 import game.battle.core.BattleMode;
+import game.common.enums.BattleType;
 import game.common.enums.Scene;
 
 public class GameSession {
@@ -12,13 +13,9 @@ public class GameSession {
 
     private BattleType battleType = BattleType.REGIST_NORMAL_MOONSHOT; // TODO:別ゲームから注入するように要修正
 
-    public void init() {
-        scene = Scene.TITLE;
-    }
+    public void init() { scene = Scene.TITLE; }
 
-    public GameSession() {
-        init();
-    }
+    public GameSession() { init(); }
 
     public void update(Input input, int frame) {
         switch (scene) {
