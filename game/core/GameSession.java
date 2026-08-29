@@ -1,7 +1,6 @@
 package game.core;
 
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 
 import game.params.stage.Stage1;
@@ -22,7 +21,7 @@ public class GameSession {
 
     public void init() {
         scene = Scene.TITLE;
-        lives = 3;
+        lives = 1;
         stageIndex = 0;
     }
 

@@ -12,7 +12,7 @@ public final class BulletColors {
 
     static {
         COLORS.put(BulletType.SMALL_CIRCLE_PINK, Color.PINK);
-        COLORS.put(BulletType.SMALL_CIRCLE_LIGHT_BLUE, ColorConst.WHITEBLUE);
+        COLORS.put(BulletType.SMALL_CIRCLE_LIGHT_BLUE, ColorConst.LIGHTBLUE);
     }
 
     private BulletColors() {}
