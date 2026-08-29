@@ -92,11 +92,12 @@ public class GamePanel extends JPanel {
     }
 
     private void drawGame(Graphics2D graphics) {
-        var player = gameSession.stage().player;
-        var enemies = gameSession.stage().enemies;
-        var boss = gameSession.stage().boss;
-        var shots = gameSession.stage().shotPool.all();
-        var bullets = gameSession.stage().bulletPool.all();
+        var danmaku = gameSession.danmaku();
+        var player = danmaku.stage().player;
+        var enemies = danmaku.stage().enemies;
+        var boss = danmaku.stage().boss;
+        var shots = danmaku.stage().shotPool.all();
+        var bullets = danmaku.stage().bulletPool.all();
         
         // Draw player
         if(player.iframes() == 0 || (frame / 2) % 2 == 0) {
@@ -132,7 +133,7 @@ public class GamePanel extends JPanel {
         // Draw ScoreBoard
         graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), gameSession.lives());
+        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), danmaku.lives());
         var bossHp = boss != null ? String.format(" BossHP %d", boss.hitPoints()) : "";
         graphics.drawString(scoreBoard + bossHp, 8, ConfigConst.HEIGHT - 12);
     }
