@@ -1,19 +1,18 @@
 package game.entity;
-
-import java.awt.Color;
+import game.bullet.BulletType;
 
 public class Bullet extends Entity {
     
-    private Color color;
-    public Color color() { return color; }
+    private BulletType bulletType;
+    public BulletType bulletType() { return bulletType; }
 
     private double vx, vy;
 
-    public Bullet(double x, double y, double speed, double angle, int radius, Color color) {
+    public Bullet(double x, double y, double speed, double angle, int radius, BulletType bulletType) {
         this.x = x;
         this.y = y;
         this.radius = radius;
-        this.color = color;
+        this.bulletType = bulletType;
         this.vx = speed * Math.cos(angle);
         this.vy = speed * Math.sin(angle);
     }

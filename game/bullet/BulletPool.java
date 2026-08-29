@@ -6,13 +6,11 @@ import java.util.List;
 import game.entity.Bullet;
 import game.util.GameUtil;
 
-import java.awt.Color;
-
 public class BulletPool {
     private List<Bullet> bullets = new ArrayList<>();
 
-    public void pool(double x, double y, double speed, double angle, int r, Color c) {
-        bullets.add(new Bullet(x, y, speed, angle, r, c));
+    public void pool(double x, double y, double speed, double angle, int r, BulletType bt) {
+        bullets.add(new Bullet(x, y, speed, angle, r, bt));
     }
 
     public void update() {

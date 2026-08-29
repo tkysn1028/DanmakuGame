@@ -1,5 +1,6 @@
 package game.ui;
 import game.core.Input;
+import game.bullet.BulletType;
 import game.core.GameSession;
 import game.util.ConfigConst;
 import java.awt.Color;
@@ -119,7 +120,10 @@ public class GamePanel extends JPanel {
 
         // Draw bullets
         bullets.forEach((bullet) -> {
-            graphics.setColor(bullet.color());
+            switch (bullet.bulletType()) {
+                case BulletType.smallCirclePink -> graphics.setColor(Color.PINK);
+                case BulletType.smallCircleLightBlue -> graphics.setColor(new Color(120, 210, 255));
+            }
             fillCircle(graphics, bullet.x, bullet.y, bullet.radius());
         });
 
