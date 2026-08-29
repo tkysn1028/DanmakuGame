@@ -3,41 +3,41 @@ package game.core;
 import java.util.List;
 import java.util.function.Function;
 
-import game.params.stage.Stage1;
-import game.patterns.StagePatterns;
+import game.params.battle.Battle1;
+import game.patterns.BattlePatterns;
 import game.scheduler.Coroutine;
 
 public class DanmakuMode {
-    private static final List<Function<Stage, Coroutine>> STAGES = List.of(
-        s -> StagePatterns.stage1(s, Stage1.normal())
+    private static final List<Function<Battle, Coroutine>> BATTLES = List.of(
+        s -> BattlePatterns.battle1(s, Battle1.normal())
     );
 
-    private Stage stage;
-    public Stage stage() { return stage; }
+    private Battle battle;
+    public Battle battle() { return battle; }
 
-    private int stageIndex;
+    private int battleIndex;
 
     private int lives;
     public int lives() { return lives; }
 
-    public DanmakuMode(int stageIndex, int initialLives) {
+    public DanmakuMode(int battleIndex, int initialLives) {
         this.lives = initialLives;
-        this.stageIndex = stageIndex;
-        this.stage = new Stage(STAGES.get(stageIndex));
+        this.battleIndex = battleIndex;
+        this.battle = new Battle(BATTLES.get(battleIndex));
     }
 
     public Result update(Input input, int frame) {
-        stage.update(input, frame);
-        if (stage.isPlayerHit()) {
+        battle.update(input, frame);
+        if (battle.isPlayerHit()) {
             lives--;
             if (lives <= 0) {
                 return Result.FAILED;
             }
         }
-        if (stage.isCleared()) {
-            stageIndex++;
-            if (stageIndex < STAGES.size()) {
-                stage = new Stage(STAGES.get(stageIndex));
+        if (battle.isCleared()) {
+            battleIndex++;
+            if (battleIndex < BATTLES.size()) {
+                battle = new Battle(BATTLES.get(battleIndex));
             } else {
                 return Result.FAILED;
             }

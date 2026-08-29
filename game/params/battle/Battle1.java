@@ -1,4 +1,4 @@
-package game.params.stage;
+package game.params.battle;
 
 import game.params.bullet.Spiral;
 import game.params.bullet.Spread;
@@ -6,7 +6,7 @@ import game.params.move.DownAndCurve;
 import game.params.move.PendulumAndRetrieve;
 import game.util.ConfigConst;
 
-public class Stage1 {
+public class Battle1 {
     public PendulumAndRetrieve pendulumAndRetrieve;
     public DownAndCurve downAndCurve1;
     public DownAndCurve downAndCurve2;
@@ -16,8 +16,8 @@ public class Stage1 {
     public Spread spread2;
     public int interval;
 
-    public static Stage1 normal() {
-        var p = new Stage1();
+    public static Battle1 normal() {
+        var p = new Battle1();
         p.pendulumAndRetrieve = new PendulumAndRetrieve()
                     .baseXPosition(ConfigConst.WIDTH / 2.0)
                     .baseYPosition(ConfigConst.HEIGHT / 5.0)

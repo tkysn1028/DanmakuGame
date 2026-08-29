@@ -5,7 +5,7 @@ import game.entity.Bullet;
 import game.entity.Enemy;
 import game.entity.Player;
 import game.entity.Shot;
-import game.params.init.InitStageParam;
+import game.params.init.InitBattleParam;
 import game.scheduler.Coroutine;
 import game.scheduler.Scheduler;
 import game.shot.ShotPool;
@@ -14,31 +14,31 @@ import game.util.GameUtil;
 import java.util.List;
 import java.util.function.Function;
 
-public class Stage {
-    private InitStageParam initStageParam = new InitStageParam();
-    public Player player = initStageParam.player;
-    public List<Enemy> enemies = initStageParam.enemies;
-    public Enemy boss = initStageParam.boss;
-    public BulletPool bulletPool = initStageParam.bulletPool;
-    public Scheduler scheduler = initStageParam.scheduler;
-    public ShotPool shotPool = initStageParam.shotPool;
+public class Battle {
+    private InitBattleParam initBattleParam = new InitBattleParam();
+    public Player player = initBattleParam.player;
+    public List<Enemy> enemies = initBattleParam.enemies;
+    public Enemy boss = initBattleParam.boss;
+    public BulletPool bulletPool = initBattleParam.bulletPool;
+    public Scheduler scheduler = initBattleParam.scheduler;
+    public ShotPool shotPool = initBattleParam.shotPool;
 
     private boolean cleared = false;
     public void clear() { cleared = true; }
     public boolean isCleared() { return cleared; }
 
     private boolean isPlayerHit = false;
-    public boolean isPlayerHit() { 
+    public boolean isPlayerHit() {
         var out = isPlayerHit;
         isPlayerHit = false;
         return out;
     }
     public void hit() { isPlayerHit = true; }
 
-    public Stage(Function<Stage, Coroutine> stageScript) {
-        scheduler.add(stageScript.apply(this));
+    public Battle(Function<Battle, Coroutine> battleScript) {
+        scheduler.add(battleScript.apply(this));
     }
-    
+
     public void update(Input input, int frame) {
         scheduler.tick();
         player.update(input);

@@ -93,11 +93,11 @@ public class GamePanel extends JPanel {
 
     private void drawGame(Graphics2D graphics) {
         var danmaku = gameSession.danmaku();
-        var player = danmaku.stage().player;
-        var enemies = danmaku.stage().enemies;
-        var boss = danmaku.stage().boss;
-        var shots = danmaku.stage().shotPool.all();
-        var bullets = danmaku.stage().bulletPool.all();
+        var player = danmaku.battle().player;
+        var enemies = danmaku.battle().enemies;
+        var boss = danmaku.battle().boss;
+        var shots = danmaku.battle().shotPool.all();
+        var bullets = danmaku.battle().bulletPool.all();
         
         // Draw player
         if(player.iframes() == 0 || (frame / 2) % 2 == 0) {

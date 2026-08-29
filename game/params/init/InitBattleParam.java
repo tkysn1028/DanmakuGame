@@ -10,7 +10,7 @@ import game.scheduler.Scheduler;
 import game.shot.ShotPool;
 import game.util.ConfigConst;
 
-public class InitStageParam {
+public class InitBattleParam {
     public Player player;
     public List<Enemy> enemies;
     public Enemy boss;
@@ -18,7 +18,7 @@ public class InitStageParam {
     public Scheduler scheduler;
     public ShotPool shotPool;
 
-    public InitStageParam() {
+    public InitBattleParam() {
         player = new Player()
                 .initX(ConfigConst.WIDTH / 2.0)
                 .initY(ConfigConst.HEIGHT)
