@@ -1,8 +1,10 @@
 package game.core;
 
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import game.params.stage.Stage1;
 import game.patterns.StagePatterns;
 import game.scheduler.Coroutine;
 
@@ -20,7 +22,7 @@ public class GameSession {
 
     public void init() {
         scene = Scene.TITLE;
-        lives = 1;
+        lives = 3;
         stageIndex = 0;
     }
 
@@ -29,7 +31,7 @@ public class GameSession {
     }
 
     private static final List<Function<Stage, Coroutine>> STAGES = List.of(
-        StagePatterns::stage1
+            s -> StagePatterns.stage1(s, Stage1.normal())
     );
 
     public void update(Input input, int frame) {
