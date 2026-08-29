@@ -5,22 +5,23 @@ import game.entity.Bullet;
 import game.entity.Enemy;
 import game.entity.Player;
 import game.entity.Shot;
+import game.params.init.InitStageParam;
 import game.scheduler.Coroutine;
 import game.scheduler.Scheduler;
 import game.shot.ShotPool;
 import game.util.GameUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
 public class Stage {
-    public Player player = new Player();
-    public List<Enemy> enemies = new ArrayList<>();
-    public Enemy boss = null;
-    public BulletPool bulletPool = new BulletPool();
-    public Scheduler scheduler = new Scheduler();
-    public ShotPool shotPool = new ShotPool();
+    private InitStageParam initStageParam = new InitStageParam();
+    public Player player = initStageParam.player;
+    public List<Enemy> enemies = initStageParam.enemies;
+    public Enemy boss = initStageParam.boss;
+    public BulletPool bulletPool = initStageParam.bulletPool;
+    public Scheduler scheduler = initStageParam.scheduler;
+    public ShotPool shotPool = initStageParam.shotPool;
 
     private boolean cleared = false;
     public void clear() { cleared = true; }

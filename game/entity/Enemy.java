@@ -4,13 +4,7 @@ public class Enemy extends Entity{
     private int hitPoints;
     public int hitPoints() { return hitPoints; }
     public void hit() { if (hitPoints > 0) hitPoints--; }
+    public Enemy radius(int radius) { this.radius = radius; return this; }
 
-    private int maxHitPoints;
-    public int maxHitPoints() { return maxHitPoints; }
-
-    public Enemy(int hitPoints, int radius) {
-        this.hitPoints = hitPoints;
-        this.maxHitPoints = hitPoints;
-        this.radius = radius;
-    }
+    public Enemy hitPoints(int hitPoints) { this.hitPoints = hitPoints; return this;}
 }

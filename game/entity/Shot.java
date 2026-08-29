@@ -6,15 +6,16 @@ public class Shot extends Entity {
     public ShotType shotType() { return shotType; }
 
     private double vx, vy;
-    private double speed = 20.0;
+    private double speed;
 
     private boolean expired;
     public boolean isExpired() { return expired; }
     public void expire() { this.expired = true; }
 
-    public Shot(double x, double y) {
+    public Shot(double x, double y, double shotSpeed) {
         this.x = x;
         this.y = y;
+        this.speed = shotSpeed;
         this.vx = speed * Math.cos(Math.PI / -2);
         this.vy = speed * Math.sin(Math.PI / -2);
         this.radius = shotType.radius();

@@ -4,23 +4,24 @@ import game.util.ConfigConst;
 import game.util.MathUtil;
 
 public class Player extends Entity {
-    public Player() {
-        x = (ConfigConst.WIDTH - this.radius) / 2.0;
-        y = ConfigConst.HEIGHT - this.radius;
-        this.radius = 4;
-    }
+    public Player() { this.radius = 4; this.diagonalSpeedRate = 0.7071; this.speed = 5.0; this.iframes = 0; this.clampRate = 2.5; }
 
-    private double speed = 5.0;
-    public double speed() { return speed; }
-    public void slowDown() { speed = 2.5; }
-    public void fastUp() { speed = 5.0; }
+    public Player initX(double x) { this.x = x - this.radius; return this; }
+    public Player initY(double y) { this.y = y - this.radius; return this; }
 
-    private int iframes = 0;
+    private double speed;
+    public Player slowDown() { speed = 2.5; return this; }
+    public Player fastUp() { speed = 5.0; return this; }
+
+    private int iframes;
     public int iframes() { return iframes; }
-    public void setIframes() { iframes = 90; }
+    public Player resetIframes() { iframes = 0; return this; }
+    public Player setIframes() { iframes = 90; return this;  }
 
-    private double diagonalSpeedRate = 0.7071;
-    private double clampRate = 2.5;
+    private double diagonalSpeedRate;
+
+    private double clampRate;
+    public Player clampRate(double clampRate) { this.clampRate = clampRate; return this; }
 
     public void update(Input input) {
         var dx = input.right ? 1 : 0 - (input.left ? 1 : 0);
