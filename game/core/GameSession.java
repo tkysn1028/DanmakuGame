@@ -38,10 +38,10 @@ public class GameSession {
             case TITLE -> {
                 if (input.confirmPressed) {
                     stage = new Stage(STAGES.get(stageIndex));
-                    scene = Scene.PLAYING;
+                    scene = Scene.DANMAKU_PLAYING;
                 }
             }
-            case PLAYING -> {
+            case DANMAKU_PLAYING -> {
                 stage.update(input, frame);
                 if(stage.isPlayerHit()) {
                     lives--;
@@ -54,7 +54,7 @@ public class GameSession {
                     stageIndex++;
                     if(stageIndex < STAGES.size()) {
                         stage = new Stage(STAGES.get(stageIndex));
-                        scene = Scene.PLAYING;
+                        scene = Scene.DANMAKU_PLAYING;
                     } else {
                         scene = Scene.GAMEOVER;
                     }

@@ -58,7 +58,7 @@ public class GamePanel extends JPanel {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         switch (gameSession.scene()) {
             case TITLE -> drawTitle(graphics);
-            case PLAYING -> drawGame(graphics);
+            case DANMAKU_PLAYING -> drawGame(graphics);
             case GAMEOVER -> {
                 drawGame(graphics);
                 drawGameOver(graphics);

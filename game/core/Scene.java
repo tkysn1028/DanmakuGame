@@ -1,5 +1,5 @@
 package game.core;
 
 public enum Scene {
-    TITLE, PLAYING, GAMEOVER;
+    TITLE, DANMAKU_PLAYING, GAMEOVER;
 }
