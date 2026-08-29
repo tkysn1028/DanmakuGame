@@ -59,9 +59,9 @@ public class GamePanel extends JPanel {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         switch (gameSession.scene()) {
             case TITLE -> drawTitle(graphics);
-            case DANMAKU_PLAYING -> drawDanmakuGame(graphics);
+            case BATTLE_PLAYING -> drawBattleGame(graphics);
             case GAMEOVER -> {
-                drawDanmakuGame(graphics);
+                drawBattleGame(graphics);
                 drawGameOver(graphics);
             }
         }
@@ -79,7 +79,7 @@ public class GamePanel extends JPanel {
 
         graphics.setColor(ColorConst.WHITE);
         graphics.setFont(new Font("SansSerif", Font.BOLD, 40));
-        drawCentered(graphics, "DANMAKU", cy - 40);
+        drawCentered(graphics, "BATTLE", cy - 40);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 14));
         drawCentered(graphics, "- shooting -", cy - 10);
         if ((frame / 20) % 2 == 0) {
@@ -92,13 +92,13 @@ public class GamePanel extends JPanel {
         drawCentered(graphics, "ARROW: MOVE    SHIFT: SLOW    Z: SHOT", ConfigConst.HEIGHT - 40);
     }
 
-    private void drawDanmakuGame(Graphics2D graphics) {
-        var danmaku = gameSession.danmaku();
-        var player = danmaku.battle().player;
-        var enemies = danmaku.battle().enemies;
-        var boss = danmaku.battle().boss;
-        var shots = danmaku.battle().shotPool.all();
-        var bullets = danmaku.battle().bulletPool.all();
+    private void drawBattleGame(Graphics2D graphics) {
+        var battleMode = gameSession.battleMode();
+        var player = battleMode.battle().player;
+        var enemies = battleMode.battle().enemies;
+        var boss = battleMode.battle().boss;
+        var shots = battleMode.battle().shotPool.all();
+        var bullets = battleMode.battle().bulletPool.all();
         
         // Draw player
         if(player.iframes() == 0 || (frame / 2) % 2 == 0) {
@@ -134,7 +134,7 @@ public class GamePanel extends JPanel {
         // Draw ScoreBoard
         graphics.setColor(ColorConst.WHITEBLUE);
         graphics.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), danmaku.lives());
+        var scoreBoard = String.format("bullets %4d   PlayerHP %d", bullets.size(), battleMode.lives());
         var bossHp = boss != null ? String.format(" BossHP %d", boss.hitPoints()) : "";
         graphics.drawString(scoreBoard + bossHp, 8, ConfigConst.HEIGHT - 12);
     }

@@ -7,7 +7,7 @@ import game.battle.params.battle.Battle1;
 import game.battle.patterns.BattlePatterns;
 import game.core.scheduler.Coroutine;
 
-public class DanmakuMode {
+public class BattleMode {
     private static final Map<BattleType, Function<Battle, Coroutine>> BATTLES = Map.of(
         BattleType.REGIST_NORMAL_MOONSHOT, s -> BattlePatterns.battleRegistNormalMoonShot(s, Battle1.normal())
     );
@@ -18,7 +18,7 @@ public class DanmakuMode {
     private int lives;
     public int lives() { return lives; }
 
-    public DanmakuMode(BattleType battleType, int initialLives) {
+    public BattleMode(BattleType battleType, int initialLives) {
         this.lives = initialLives;
         this.battle = new Battle(BATTLES.get(battleType));
     }
