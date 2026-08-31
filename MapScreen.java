@@ -36,7 +36,7 @@ import javax.swing.Timer;
 public class MapScreen extends JPanel {
 
     // ------------------------------------------------------------------
-    static final int COLS = 10, ROWS = 10;
+    static final int COLS = 20, ROWS = 15;
     static final int MARGIN = 46;
     static final int SPACING = 52;
     static final int WIDTH  = MARGIN * 2 + (COLS - 1) * SPACING;   // 560
